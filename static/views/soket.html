@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>聊天室</title>
+    <link rel="stylesheet" type="text/css" href="../css/soket.css" /> </head>
+
+<body>
+    <div class="main">
+        <div class="main-top"> socket.io demo </div>
+        <div class="main-body">
+            <section class="chatRoomInfo">
+                <div class="info">当前共有<span class="chatNum">0</span>人在线。在线列表:&nbsp;<span class="chatList"></span></div>
+            </section>
+        </div>
+        <div class="main-footer clearfix">
+            <div class="input">
+                <input type="text" name="msg" id="msg" value="" /> </div>
+            <button type="button" class="send">发送</button>
+        </div>
+    </div>
+    <script src="../js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/socket.io.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function () {
+            /*按钮点击效果*/
+            $('.send').on({
+                mousedown() {
+                    $(this).css({
+                        'background': "#007aff",
+                        'color': "#ffffff"
+                    });
+                },
+                mouseup() {
+                    $(this).css({
+                        'background': "#e8e8e8",
+                        'color': "#ffffff"
+                    });
+                }
+            })
+            var username = prompt('请输入您的姓名');
+            if (!username) {
+                alert('姓名必填');
+                history.go(0);
+            }
+
+            var userInfo = {
+                'username': encodeURIComponent(username)
+            };
+            //生成 soket实例
+            var socket = io.connect("ws://127.0.0.1:8099");
+            //通知服务器有用户登录
+            socket.emit('login', userInfo);
+
+        });
+    </script>
+</body>
+
+</html>
