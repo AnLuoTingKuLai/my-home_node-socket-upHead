@@ -12,6 +12,7 @@
         <div class="main-body">
             <section class="chatRoomInfo">
                 <div class="info">当前共有<span class="chatNum">0</span>人在线。在线列表:&nbsp;<span class="chatList"></span></div>
+                <div class="info">当前共有<span class="offchatNum">0</span>人离线</div>
             </section>
         </div>
         <div class="main-footer clearfix">
@@ -52,6 +53,60 @@
             var socket = io.connect("ws://127.0.0.1:8099");
             //通知服务器有用户登录
             socket.emit('login', userInfo);
+            //监听新用户登录
+            socket.on('login', function (o) {
+                debugger;
+                updateMsg(o, 'login');
+            });
+            //监听用户退出
+            socket.on('logout', function (o) {
+                debugger;
+                updateMsg(o, 'logout');
+            });
+
+
+
+            function logout() {
+                debugger;
+                socket.disconnect();
+                location.reload();
+            }
+            /*监听函数*/
+            function updateMsg(o, action) {
+                debugger;
+                //离线数
+                var onOffLineCount = o.onOffLineCount;
+                //当前在线数
+                var onlineCount = o.onlineCount;
+                //新加用户
+                var user = decodeURIComponent(o.user);
+                //更新在线人数
+                var userList = o.userList;
+                var userListHtml = '';
+                for (key of userList) {
+                    userListHtml += `${decodeURIComponent(key)} 、`
+                }
+                //在线数量
+                $('.chatNum')
+                    .text(onlineCount);
+                //离线数量
+                $('.offchatNum')
+                    .text(onOffLineCount);
+                //在线人列表
+                $('.chatList')
+                    .text(userListHtml);
+                //系统消息
+                if (action == 'login') {
+                    var sysHtml = '<section class="chatRoomTip"><div>' + user + '进入聊天室</div></section>';
+                }
+                if (action == "logout") {
+                    var sysHtml = '<section class="chatRoomTip"><div>' + user + '退出聊天室</div></section>';
+                }
+                $(".main-body")
+                    .append(sysHtml);
+                $('.main-body')
+                    .scrollTop(99999);
+            }
 
         });
     </script>
