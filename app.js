@@ -11,7 +11,7 @@ var routes = require('./routes/index');
 
 var app = express();
 
-
+app.use(multer({ dest: '/tmp/'}).array('image'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -20,7 +20,9 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+//允许上传大文件
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 app.use(cookieParser());
 //设置静态文件目录
 app.use(express.static(path.join(__dirname, 'static')));

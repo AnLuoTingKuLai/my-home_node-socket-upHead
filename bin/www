@@ -23,7 +23,7 @@ var server = app.listen(app.get('port'), function () {
 	console.log("应用实例，访问地址为 http://%s:%s", host, port)
 });
 // 引入文件 soket
-var soket = require('../routes/soket');
+var soket = require('../routes/soketServer');
 soket.listen(server); 
 
 //错误提示

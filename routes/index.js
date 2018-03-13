@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser'); //编码解析用
 var path = require('path');
 var db = require('../config/db');
 
@@ -7,6 +8,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection(db);
 // 执行数据库连接 
 connection.connect();
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -67,4 +69,18 @@ router.route('/soket')
 	});
 
 
+
+//用户头像
+var userHeadImg = require('../controller/userHeadImg');
+//获取用户信息
+router.route('/getUserHeadImg')
+    .post(function (req, res, next) {
+        userHeadImg.getImg(req, res, next);
+    })
+router.route('/setUserHeadImg')
+    .post(function (req, res, next) {
+        console.log('调用了 /setUserHeadImg  接口')
+        // console.log('==================111')
+        userHeadImg.setImg(req, res, next);
+    })
 module.exports = router;

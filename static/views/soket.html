@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <title>聊天室</title>
+    <!-- //soket -->
     <link rel="stylesheet" type="text/css" href="../css/soket.css" /> </head>
 
 <body>
     <div class="main">
-        <div class="main-top"> socket.io demo </div>
+        <div class="main-top"> 
+            <span>socket.io demo </span>
+            <span class="img-head-wrap">
+                <a href="./views/personal.html"><img class="img-head" src="../images/2.jpg" alt=""></a>
+            </span>
+        </div>
         <div class="main-body">
             <section class="chatRoomInfo">
                 <div class="info">当前共有<span class="chatNum">0</span>人在线。在线列表:&nbsp;<span class="chatList"></span></div>
@@ -17,12 +23,12 @@
         </div>
         <div class="main-footer clearfix">
             <div class="input">
-                <input type="text" id="msg" value="" /> </div>
+                <input type="text" id="msg"/> </div>
             <button type="button" id="sendBtn" class="send">发送</button>
         </div>
     </div>
-<script src="../dep/jquery-2.1.0.js"></script>
-<script src="../dep/socket.io.min.js"></script>
-<script src="../js/socket.js"></script>
 </body>
+<script src="../plugins/jquery-2.1.0.js"></script>
+<script src="../plugins/socket.io.min.js"></script>
+<script src="../js/socket.js"></script>
 </html>

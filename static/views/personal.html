@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<title>裁剪图片</title>
+	<link rel="stylesheet" href="../plugins/cropperjs/cropper.min.css">
+	<link rel="stylesheet" href="../plugins/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+	<style>
+		.m-b-10 {
+			margin-bottom: 10px;
+		}
+		.row {
+			margin-bottom: 5px;
+		}
+
+		.img-container,
+		.img-preview {
+		  background-color: #f7f7f7;
+		  text-align: center;
+		  width: 100%;
+		}
+
+		.img-container {
+		  margin-bottom: 1rem;
+		  max-height: 497px;
+		  min-height: 200px;
+		}
+
+		@media (min-width: 768px) {
+		  .img-container {
+		    min-height: 497px;
+		  }
+		}
+
+		.img-container > img {
+		  max-width: 100%;
+		}
+		.img-100 {
+			width: 100px;
+			height: 100px;
+			overflow: hidden;
+		}
+
+		button {
+			margin-top: 10px;
+		}
+
+		#result {
+			width: 150px;
+			height: 150px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-1"> 
+				<div class="img-container">
+					<img src="" id="photo"> 
+				</div>
+				
+			</div>
+			<div class="col-sm-2 col-sm-offset-1">
+				<div class="m-b-10 ">
+					<p> 预览(100*100)： </p>
+					<div class="img-preview img-100"> </div>
+				</div>
+				<div class="btn-group">
+					<label class="btn btn-danger"> 
+						<span>选择图片</span>
+						<input type="file" id="upImg" class="sr-only"> 
+					</label>
+					<a id="cutImg" class="btn btn-primary" href="javascript:;">裁剪图片</a>
+				</div>
+				
+				<div>
+					<br/>
+					<p> 结果： </p> <img src="" alt="裁剪结果" id="result"> </div>
+			</div>
+		</div>
+	</div>
+	<script src="../plugins/jquery-2.1.0.js"></script>
+	<script src="../plugins/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+	<script src="../plugins/cropperjs/cropper.min.js"></script>
+	<script src="../plugins/cropperjs/jquery-cropper.min.js"></script>
+	<!-- 页面js -->
+	<script src="../js/personal.js"></script>
+</body>
+
+</html>

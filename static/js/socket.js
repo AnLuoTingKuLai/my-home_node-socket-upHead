@@ -20,23 +20,30 @@ $(function () {
                     });
             },
             click(e) {
-                var $msg = $('#msg');
-                var content = $msg.val();
-                if (content) {
-                    var obj = {
-                        'userName': userInfo.userName,
-                        'content': content
-                    }
-                    socket.emit('message', obj);
-                    $msg.val("");
-                }
+                emitMsg()
+               
             }
         })
+    $('#msg').on({
+        keydown(e) {
+            e = e || window.event;
+            if (e.keyCode == 13) {
+                emitMsg();
+                return false;
+            }
+        }
+    })
     //生成 soket实例
     var socket = io.connect("ws://127.0.0.1:8099");
     //通知服务器有用户登录
-    socket.emit('login', userInfo);
-     debugger;
+    if (userInfo && userInfo.userName) {
+        socket.emit('login', userInfo);
+    } else {
+        alert('请先登录');
+        setTimeout(() => {
+            window.location.href="../login/login.html"
+        }, 2000)
+    }
     //监听新用户登录
     socket.on('login', function (o) {
         updateMsg(o, 'login');
@@ -96,5 +103,18 @@ $(function () {
             .append(sysHtml);
         $('.main-body')
             .scrollTop(99999);
+    }
+    //发送信息
+    function emitMsg(e){
+        var $msg = $('#msg');
+        var content = $msg.val();
+        if (content) {
+            var obj = {
+                'userName': userInfo.userName,
+                'content': content
+            }
+            socket.emit('message', obj);
+            $msg.val("");
+        }
     }
 });
