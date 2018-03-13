@@ -10,7 +10,7 @@ connection.connect();
 module.exports = {
     getImg(req, res, next) {
         // 查询数据  
-        var sqlstring = `Select * From userData WHERE userName='${req.body.userName}'`;
+        var sqlstring = `Select * From userData WHERE userName='${req.body.userName}' && fileUrl != ''`;
         connection.query(sqlstring, function (err, result) {
             if (err) {
                 console.log('[查询失败] - ', err);
@@ -44,10 +44,13 @@ module.exports = {
         //接受文件
         var imgData = req.body.file;
         // 转义base64
-        var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
         var base64Data = imgData.replace(/\s/g,"+");
+        base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
         // base64到后台 '+' 会变成 ' ' 所以转义一下
+        console.log('===============')
         var dataBuffer = new Buffer(base64Data, 'base64');
+        console.log('base64Data.substring(0,100): ', base64Data.substring(0,100))
+        console.log('dataBuffer: ', dataBuffer)
 
         //查询用户
         sqlstring = `Select userName, filePath From userdata WHERE userName='${req.body.userName}' && filePath != ''`;
@@ -62,8 +65,8 @@ module.exports = {
                 var timeStamp = Math.round(Math.random() * 9999999) + (new Date()).getTime();
                 //文件插入
                 var fileName = 'head.jpg'; //文件名
-                var fileUrl = `../static/images/${timeStamp}/`; //文件相对路径
-                var filePath = path.join(__dirname, fileUrl); //文件绝对路径
+                var fileUrl = `../images/${timeStamp}/`; //文件相对路径
+                var filePath = path.join(__dirname, `../static/images/${timeStamp}/`); //文件绝对路径
                 console.log('filePath1', filePath);
                 //创建文件夹
                 fs.mkdir(filePath,function(err){  
@@ -71,7 +74,7 @@ module.exports = {
                         console.error(err);
                         return
                     };
-                    console.log('创建目录成功');  
+                    console.log('创建目录成功'); 
                     fs.writeFile(`${filePath}${fileName}`, dataBuffer, function(err) {
                         if(err){
                           res.send(err);
@@ -81,6 +84,7 @@ module.exports = {
                         fileUrl = fileUrl.replace(/\\/g,"/");
                         filePath = filePath.replace(/\\/g,"/");
                         sqlstring = `Update userdata Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
+                        console.log('创建文件成功')
                         console.log('fileUrl:', fileUrl);
                         console.log('filePath:', filePath);
                         console.log('sqlstring:', sqlstring);

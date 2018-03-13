@@ -20,7 +20,7 @@
  					alert("请求超时");
  					break;
  				default:
- 					alert("未知错误");
+ 					// alert("未知错误");
  			}
  		},
  		success: function (data) {
@@ -100,6 +100,7 @@
  		success: function (obj) {
  			$('#photo')
  				.attr('src', `${obj.data.fileUrl}${obj.data.fileName}`);
+ 			//初始化插件
  			initCropper($('#photo'), $('#upImg'));
  		}
  	});
@@ -119,18 +120,27 @@
  		$target.attr('src', dataurl)
  		document.body.appendChild(result);
  		//发起post请求
- 		var base64 = $target.attr('src');
- 		var data = `file=${base64}&userName=${userInfo.userName}`;
- 		var xhr = new XMLHttpRequest();
- 		xhr.onreadystatechange = function (event) {
- 			if (xhr.readyState == 4) { //4:解析完毕
- 				if (xhr.status == 200) { //200:正常返回
- 					console.log(xhr)
- 				}
- 			}
- 		};
- 		xhr.open('POST', '/setUserHeadImg', true); //true为异步
- 		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
- 		xhr.send(data);
+ 		var base64 = dataurl;
+ 		
+ 		$.ajax({
+ 			contentType: "application/x-www-form-urlencoded; charset=utf-8",
+ 			url: '/setUserHeadImg',
+ 			data: {
+	 			'file': base64,
+	 			'userName': userInfo.userName
+	 		},
+ 		})
+ 		// var data = `file=${base64}&userName=${userInfo.userName}`;
+ 		// var xhr = new XMLHttpRequest();
+ 		// xhr.onreadystatechange = function (event) {
+ 		// 	if (xhr.readyState == 4) { //4:解析完毕
+ 		// 		if (xhr.status == 200) { //200:正常返回
+ 		// 			console.log(xhr)
+ 		// 		}
+ 		// 	}
+ 		// };
+ 		// xhr.open('POST', '/setUserHeadImg', true); //true为异步
+ 		// xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+ 		// xhr.send(data);
  	}
  });
