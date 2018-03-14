@@ -1,6 +1,14 @@
 
-# 项目布局
+#安装
+> 
+```base
+$npm install
+$set DEBUG=myapp & npm start
 ```
+> 
+# 项目布局
+> 
+
 |-- bin                            
 |    |-- www 						 //项目启动文件
 |-- config                           
@@ -13,7 +21,7 @@
 |    |-- js							 //js文件
 |    |-- plugins					 //插件
 |    |-- views						 //静态html文件
-|-- views  							 //视图
+|-- views  							 //视图(404 500等)
 |-- app.js  						 //服务器配置
 |-- package.json                     // 项目及工具的依赖配置文件
 |-- README.md                        // 说明
