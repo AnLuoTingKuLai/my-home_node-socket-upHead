@@ -4,13 +4,14 @@
  * Module dependencies.
  */
 var app = require('../app');
+var serverConfig = require('../config/server');
 var debug = require('debug')('nodedemo:server');
 var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8099');
+var port = normalizePort(process.env.PORT || serverConfig.port);
 app.set('port', port);
 
 
