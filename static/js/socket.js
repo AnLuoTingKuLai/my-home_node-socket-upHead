@@ -33,6 +33,14 @@ $(function () {
             }
         }
     })
+    //默认头像设置
+     $('.img-o-head').add($('#img-head')).on({
+        error(){
+            $(this).attr({
+                src: '../images/head.jpg'
+            })
+        }
+    })
     //生成 soket实例
     var socket = io.connect("ws://172.21.215.121:8099");
     //通知服务器有用户登录
@@ -47,6 +55,22 @@ $(function () {
     //监听新用户登录
     socket.on('login', function (o) {
         updateMsg(o, 'login');
+        $.when($.ajax({
+            url: '/getUserInfo',
+            data: JSON.stringify({
+                'userName': userInfo.userName
+            })
+        })).then(req => {
+            if (req.state == 2) {
+                let src = '../images/head.js'
+                if (req.data) {
+                    src = `${req.data.fileUrl}${req.data.fileName}`;
+                };
+                $('#img-head').attr({
+                    'src': src
+                });
+            }
+        })
     });
     //监听用户退出
     socket.on('logout', function (o) {
@@ -78,19 +102,20 @@ $(function () {
         //新加用户
         var userName = o.userName;
         //更新在线人数
-        var userList = o.userList;
-
+        var userList = o.onlineUsers;
         //生成用户列表
         var userListHtml = '';
-        for (key of userList) {
-            userListHtml += `${key} 、`
+        for (user of userList) {
+            userListHtml += `
+                <img class="img-o-head" src="${user.fileUrl}${user.fileName}" alt="$(userName)">
+            `
         }
         //在线数量
         $('.chatNum').text(onlineCount);
         //离线数量
         $('.offchatNum').text(onOffLineCount);
         //在线人列表
-        $('.chatList').text(userListHtml);
+        // $('.chatList').html(userListHtml);
         //系统消息
         if (action == 'login') {
             var sysHtml = '<section class="chatRoomTip"><div>' + userName + '进入聊天室</div></section>';
@@ -117,4 +142,5 @@ $(function () {
             $msg.val("");
         }
     }
+   
 });

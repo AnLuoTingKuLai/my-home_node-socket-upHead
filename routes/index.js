@@ -17,57 +17,41 @@ router.get('/', function (req, res, next) {
 });
 
 /* login接口的时候 */
+var login = require('../controller/login');
 router.route('/login')
 	.post(function (req, res, next) {
-
-		// 查询数据  
-        var sqlstring = `Select * From user WHERE userName='${req.body.userName}' && password='${req.body.password}'`;
-        connection.query(sqlstring, function (err, result) {
-            if(err){
-                console.log('[SELECT ERROR] - ', err);
-                return;
-            }
-            //用户不存在于数据库
-            if(result && result.length < 1) {
-                // 插入数据
-                sqlstring = `Insert into user Values('${req.body.userName}', '${req.body.password}', '1')`;
-                connection.query(sqlstring, function (err, result) {
-                    if(err){
-                        console.log('[插入失败] - ', err.message);
-                        res.status(200).json({state: '1', msg: '密码错误'});
-                        return;
-                    }        
-                    console.log('插入成功')
-                    var sqlstring = "";
-                    res.status(200).json({state: '2', msg: '注册成功' });
-                });
-            } else {
-                // 更新数据
-                sqlstring = `Update user Set state = '1' Where userName = '${req.body.userName}'`;
-                connection.query(sqlstring, function (err, result) {
-                    if(err || result && result.length < 1){
-                        console.log('[UPDATE ERROR] - ', err.message);
-                        return;
-                    }        
-                    console.log('更新成功'); 
-                    res.status(200).json({state: '2', msg: '登录成功' });
-                });
-            }
-       });
+        login.post(req, res, next);
 	})
 	.get(function (req, res, next) {
-		res.sendFile(path.join(__dirname, '../static/login/login.html'));
+		login.get(req, res, next);
 	});
 
+//聊天窗口
 router.route('/soket')
-	.post(function (req, res, next) {
-		// res.redirect('http://www.baidu.com')
-		res.sendFile(path.join(__dirname, '../static/views/soket.html'));
-	})
-	.get(function (req, res, next) {
-		res.sendFile(path.join(__dirname, '../static/views/soket.html'));
-	});
+.post(function (req, res, next) {
+	res.sendFile(path.join(__dirname, '../static/views/soket.html'));
+})
+.get(function (req, res, next) {
+	res.sendFile(path.join(__dirname, '../static/views/soket.html'));
+});
 
+//获取用户信息
+router.route('/getUserInfo')
+.post(function (req, res, next) {
+	var sqlstring = `Select * From userData WHERE userName='${req.body.userName}'`;
+	connection.query(sqlstring, (err, result) => {
+		if (err) {
+            console.log('[查询失败] - ', err);
+            return;
+        }
+        res.status(200).json({
+        	state: '2',
+            msg: '获取用户信息成功',
+            data: result[0]
+        });
+        console.log(result[0])
+	})
+})
 
 
 //用户头像

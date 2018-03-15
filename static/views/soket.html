@@ -2,33 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>聊天室</title>
-    <!-- //soket -->
-    <link rel="stylesheet" type="text/css" href="../css/soket.css" /> </head>
+	<meta charset="UTF-8" />
+	<title>聊天室</title>
+	<!-- //soket -->
+	<link rel="stylesheet" type="text/css" href="../css/soket.css" /> </head>
 
 <body>
-    <div class="main">
-        <div class="main-top"> 
-            <span>socket.io demo </span>
-            <span class="img-head-wrap">
-                <a href="./views/personal.html"><img class="img-head" src="../images/2.jpg" alt=""></a>
-            </span>
+	<div class="main">
+		<div class="main-top"> 
+			<span>聊天室</span> 
+			<div class="img-head-wrap">
+                <a href="./views/personal.html">
+                    <img id="img-head" class="img-head" src="../images/53.jpg">
+                </a>
+                <div class="head-filter-list-wrap">
+	                <div class="head-filter-list">
+		                <div data-filter="image-grayscale">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-saturate">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-sepia">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-invert">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-opacity">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-brightness">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-contrast">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-hue-rotate">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-blur">
+		                    <img src="../images/2.jpg">
+		                </div>
+		                <div data-filter="image-normal">
+		                    <img src="../images/2.jpg">
+		                </div>
+		            </div>
+		        </div>
+            </div> 
         </div>
-        <div class="main-body">
-            <section class="chatRoomInfo">
-                <div class="info">当前共有<span class="chatNum">0</span>人在线。在线列表:&nbsp;<span class="chatList"></span></div>
-                <div class="info">当前共有<span class="offchatNum">0</span>人离线</div>
-            </section>
-        </div>
-        <div class="main-footer clearfix">
-            <div class="input">
-                <input type="text" id="msg"/> </div>
-            <button type="button" id="sendBtn" class="send">发送</button>
-        </div>
-    </div>
+		<div class="main-body">
+			<section class="chatRoomInfo">
+				<div class="info"> 当前共有<span class="chatNum">0</span> 人在线, <span class="offchatNum">0</span>人离线 </div>
+				<div class="user-list-wrap"> <span class="text">在线列表: </span>
+					<div class="chatList">
+						<div class="base-info-wrap"> <img class="img-o-head" src="../images/53.jpg"> </div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="main-footer clearfix">
+			<div class="input">
+				<input type="text" id="msg" /> </div>
+			<button type="button" id="sendBtn" class="send">发送</button>
+		</div>
+	</div>
 </body>
 <script src="../plugins/jquery-2.1.0.js"></script>
 <script src="../plugins/socket.io.min.js"></script>
+<script src="../js/common.js"></script>
 <script src="../js/socket.js"></script>
+
 </html>

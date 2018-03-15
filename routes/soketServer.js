@@ -77,17 +77,18 @@ io.on('connection', function (socket) {
             }
 
             //获取在线用户列表
-            var sqlstring = `Select userName From user WHERE state = '1'`;
+            var sqlstring = `SELECT u.userName,u.password,u.state,ua.fileName,ua.fileUrl,ua.filePath from USER AS u left JOIN userdata AS ua on u.userName = ua.userName WHERE u.state = '1'`;
             connection.query(sqlstring, function (err, result) {
-                var userList = [];
-                for(let i of result) {
-                    userList.push(i.userName);
-                }
+                // var userList = [];
+                console.log('返回的数据:', result);
+                // for(let i of result) {
+                //     userList.push(i.userName);
+                // }
                 let obj =  {
                     onOffLineCount: onOffLineCount, //离线人数
                     onlineCount: onlineCount, //在线人数
                     userName: name, //当前用户
-                    userList: userList //在线用户列表
+                    onlineUsers: result //在线用户列表
                 }
                 console.log('obj', obj)
                 if (type == 1) {
