@@ -67,4 +67,9 @@ router.route('/setUserHeadImg')
         // console.log('==================111')
         userHeadImg.setImg(req, res, next);
     })
+router.route('/setFilter')
+    .post(function (req, res, next) {
+        // console.log('==================111')
+        userHeadImg.setFilter(req, res, next);
+    })
 module.exports = router;

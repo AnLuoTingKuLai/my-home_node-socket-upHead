@@ -1,7 +1,8 @@
-@charset "UTF-8";
+  @charset "UTF-8";
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 html,
 body {
@@ -10,17 +11,21 @@ body {
   margin: 0;
   padding: 0;
   border: 0;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
+//清除浮动
 .clearfix {
-  zoom: 1; }
-  .clearfix:after {
+  zoom: 1;
+  &:after {
     clear: both;
     content: '.';
     display: block;
     width: 0;
     height: 0;
-    visibility: hidden; }
+    visibility: hidden;
+  }
+}
 
 .main {
   width: 100%;
@@ -30,8 +35,7 @@ body {
   font-size: 14px;
   box-sizing: border-box;
   /*//顶部*/
-  /*//在线用户*/ }
-  .main .main-top {
+  .main-top {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,15 +48,16 @@ body {
     color: #fff;
     font-size: 16px;
     z-index: 2;
-    box-sizing: border-box; }
-    .main .main-top .img-head-wrap {
+    box-sizing: border-box;
+    .img-head-wrap {
       float: right;
       margin-top: 22px;
       width: 44px;
       height: 44px;
       right: 20px;
-      border-radius: 50%; }
-      .main .main-top .img-head-wrap .img-head {
+      border-radius: 50%;
+      //头像
+      .img-head {
         position: relative;
         display: block;
         max-width: 100%;
@@ -60,13 +65,19 @@ body {
         margin: auto;
         border-radius: 50%;
         z-index: 2;
-        border: 2px #fff solid; }
-      .main .main-top .img-head-wrap:hover .head-filter-list-wrap {
-        width: 800px;
-        transition: all 2s; }
-      .main .main-top .img-head-wrap:hover .head-filter-list {
-        padding: 20px 50px 0 50px; }
-      .main .main-top .img-head-wrap .head-filter-list-wrap {
+        border: 2px #fff solid;  
+      }
+      // 头像 hover的时候
+      &:hover {
+        .head-filter-list-wrap {
+          width: 800px;
+          transition: all 2s;
+        }
+        .head-filter-list {
+          padding: 20px 50px 0 50px;
+        }
+      }
+      .head-filter-list-wrap {
         position: absolute;
         display: inline-block;
         top: 0;
@@ -75,8 +86,8 @@ body {
         width: 0;
         margin-right: -30px;
         /*overflow: hidden;*/
-        transition: all 2s; }
-        .main .main-top .img-head-wrap .head-filter-list-wrap .head-filter-list {
+        transition: all 2s;
+        .head-filter-list {
           height: 80px;
           margin: 0;
           border: 0;
@@ -84,8 +95,8 @@ body {
           text-indent: 0;
           box-sizing: border-box;
           overflow: hidden;
-          /* 实现滤镜关键CSS样式 */ }
-          .main .main-top .img-head-wrap .head-filter-list-wrap .head-filter-list .filter {
+          /* 实现滤镜关键CSS样式 */
+          .filter {
             display: inline-block;
             width: 44px;
             height: 44px;
@@ -95,49 +106,62 @@ body {
             overflow: hidden;
             line-height: 0;
             box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-            transition: all 1s; }
-            .main .main-top .img-head-wrap .head-filter-list-wrap .head-filter-list .filter:hover {
+            transition: all 1s;
+            &:hover {
               position: relative;
               top: 10px;
               transform: scale(2, 2);
-              transition: all 1s; }
-  .main .main-body {
+              transition: all 1s;
+            }
+          }
+        }
+      }
+    }
+  }
+  /*//在线用户*/
+  .main-body {
     position: relative;
     height: 100%;
     width: 100%;
     background-color: #efeff4;
-    overflow-y: scroll; }
-    .main .main-body .chat-room-info {
+    overflow-y: scroll;
+    .chat-room-info {
       padding: 10px;
       font-size: 12px;
-      color: #666; }
-    .main .main-body .user-list-wrap {
+      color: #666;
+    }
+    .user-list-wrap {
       margin-top: 5px;
-      padding-left: 60px; }
-      .main .main-body .user-list-wrap .text {
+      padding-left: 60px;
+      & .text {
         float: left;
         line-height: 30px;
-        margin-left: -60px; }
-      .main .main-body .user-list-wrap .img-o-head {
+        margin-left: -60px;
+      }
+      & .img-o-head {
         display: inline-block;
         width: 30px;
         height: 30px;
         margin-left: 5px;
         margin-right: 5px;
-        border-radius: 50%; }
-    .main .main-body .chat-room-tip {
+        border-radius: 50%;
+      }
+    }
+    .chat-room-tip {
       text-align: center;
       padding: 10px;
       font-size: 12px;
-      color: #444; }
-    .main .main-body .user {
+      color: #444;
+    }
+    .user {
       width: 100%;
       min-height: 38px;
       min-width: 36px;
-      margin-bottom: 15px; }
-      .main .main-body .user span {
-        float: right; }
-      .main .main-body .user div {
+      margin-bottom: 15px;
+      span {
+        float: right;
+      }
+      div {
         float: right;
         min-height: 38px;
         min-width: 38px;
@@ -149,8 +173,8 @@ body {
         word-break: break-all;
         background-color: #007aff;
         position: relative;
-        border-radius: 5px; }
-        .main .main-body .user div:after {
+        border-radius: 5px;
+        &:after {
           content: "";
           position: absolute;
           right: -5px;
@@ -159,15 +183,19 @@ body {
           height: 0;
           border-top: solid transparent;
           border-left: 7px solid #007aff;
-          border-bottom: 4px solid transparent; }
-    .main .main-body .server {
+          border-bottom: 4px solid transparent;
+        }
+      }
+    }
+    .server {
       width: 100%;
       min-height: 38px;
       min-width: 36px;
-      margin-bottom: 15px; }
-      .main .main-body .server span {
-        float: left; }
-      .main .main-body .server div {
+      margin-bottom: 15px;
+      span {
+        float: left;
+      }
+      div {
         float: left;
         min-height: 38px;
         min-width: 38px;
@@ -179,8 +207,8 @@ body {
         word-break: break-all;
         background-color: #007aff;
         position: relative;
-        border-radius: 5px; }
-        .main .main-body .server div:after {
+        border-radius: 5px;
+        &:after {
           content: "";
           position: absolute;
           left: -5px;
@@ -189,21 +217,25 @@ body {
           height: 0;
           border-top: solid transparent;
           border-right: 7px solid #007aff;
-          border-bottom: 4px solid transparent; }
-  .main .main-footer {
+          border-bottom: 4px solid transparent;
+        }
+      }
+    }
+  }
+  .main-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 50px;
-    background: #fff; }
-    .main .main-footer .input {
+    background: #fff;
+    .input {
       float: left;
       width: 80%;
       margin-top: 5px;
       margin-left: 1%;
       margin-right: 1%;
-      border: 1px solid #666; }
-      .main .main-footer .input input {
+      border: 1px solid #666;
+      input {
         width: 100%;
         height: 40px;
         padding: 10px;
@@ -211,8 +243,10 @@ body {
         box-sizing: border-box;
         outline: none;
         font-size: 14px;
-        color: #333; }
-    .main .main-footer .send {
+        color: #333;
+      }
+    }
+    .send {
       float: left;
       width: 16%;
       height: 40px;
@@ -221,32 +255,44 @@ body {
       border: none;
       background-color: #e8e8e8;
       color: #007aff;
-      outline: none; }
+      outline: none;
+    }
+  }
+}
+
 
 /* 实现滤镜关键CSS样式 */
+
 .filter {
   position: relative;
   cursor: pointer;
-  z-index: 0; }
-  .filter.filter-grayscale {
-    filter: grayscale(50%); }
-  .filter.filter-saturate {
-    filter: saturate(360%); }
-  .filter.filter-sepia {
-    filter: sepia(100%); }
-  .filter.filter-invert {
-    filter: invert(100%); }
-  .filter.filter-opacity {
-    filter: opacity(50%); }
-  .filter.filter-brightness {
-    filter: brightness(120%); }
-  .filter.filter-contrast {
-    filter: contrast(160%); }
-  .filter.filter-hue-rotate {
-    filter: hue-rotate(160deg); }
-  .filter.filter-blur {
-    filter: blur(2px); }
-
-/*# sourceMappingURL=soket.css.map */
-
-/*# sourceMappingURL=soket.css.map */
+  z-index: 0;
+  &.filter-grayscale{
+    filter: grayscale(50%);
+  }
+  &.filter-saturate{
+    filter: saturate(360%);
+  }
+  &.filter-sepia{
+    filter: sepia(100%);
+  }
+  &.filter-invert{
+    filter: invert(100%);
+  }
+  &.filter-opacity{
+    filter: opacity(50%);
+  }
+  &.filter-brightness{
+    filter: brightness(120%);
+  }
+  &.filter-contrast{
+    filter: contrast(160%);
+  }
+  &.filter-hue-rotate{
+    filter: hue-rotate(160deg);
+  }
+  &.filter-blur{
+    filter: blur(2px);
+  }
+}
+  /*# sourceMappingURL=soket.css.map */

@@ -56,7 +56,7 @@ module.exports = {
         sqlstring = `Select userName, filePath From userdata WHERE userName='${req.body.userName}' && filePath != ''`;
         connection.query(sqlstring, function (err, result) {
             if(err){
-                console.log('[UPDATE ERROR] - ', err.message);
+                console.log('[SELECT ERROR] - ', err.message);
                 return;
             }
             //如果不存在 那么就插入
@@ -118,6 +118,17 @@ module.exports = {
                     });
                 });
             }
+        });
+    },
+    setFilter(req, res, next) {
+        sqlstring = `Update userdata Set filter = '${req.body.filter}' Where userName='${req.body.userName}'`;
+        connection.query(sqlstring, function (err, result) {
+            if(err){
+                console.log('[UPDATE ERROR] - ', err.message);
+                return;
+            }
+            console.log('滤镜更新成功')
+            res.status(200).json({state: '2', msg: '修改头像成功' });
         });
     }
 }

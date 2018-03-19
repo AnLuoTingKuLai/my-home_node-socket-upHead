@@ -21,28 +21,28 @@ io.on('connection', function (socket) {
     //监听用户退出
     socket.on('disconnect', function () {
         //将退出用户在在线列表删除
-        sqlstring = `Select * From user WHERE  userName='${socket.name}'`;
-        console.log('登出的用户名', socket.name)
-        connection.query(sqlstring, function (err, result) {
-            console.log('查看退出角色', result)
-            if(err){
-                console.log('[SELECT ERROR] - ', err);
-                return;
-            }
-            if(result && result.length < 1) {
-                console.log('[SELECT ERROR] - ', '数据库内 查找不到该用户');
-            } else {
-                sqlstring = `Update user Set state = '2' WHERE userName = '${socket.name}'`;
-                connection.query(sqlstring, function (err, result) {
-                    if(err){
-                        console.log('[UPDATE ERROR] - ', err.message);
-                        return;
-                    }        
-                    console.log(`${socket.name}退出了聊天室`);
-                    getUserNume({type:1, name: socket.name})
-                });
-            }
-        });
+        // sqlstring = `Select * From user WHERE  userName='${socket.name}'`;
+        // console.log('登出的用户名', socket.name)
+        // connection.query(sqlstring, function (err, result) {
+        //     console.log('查看退出角色', result)
+        //     if(err){
+        //         console.log('[SELECT ERROR] - ', err);
+        //         return;
+        //     }
+        //     if(result && result.length < 1) {
+        //         console.log('[SELECT ERROR] - ', '数据库内 查找不到该用户');
+        //     } else {
+        //         sqlstring = `Update user Set state = '2' WHERE userName = '${socket.name}'`;
+        //         connection.query(sqlstring, function (err, result) {
+        //             if(err){
+        //                 console.log('[UPDATE ERROR] - ', err.message);
+        //                 return;
+        //             }        
+        //             console.log(`${socket.name}退出了聊天室`);
+        //             getUserNume({type:1, name: socket.name})
+        //         });
+        //     }
+        // });
        
     })
 
@@ -77,7 +77,7 @@ io.on('connection', function (socket) {
             }
 
             //获取在线用户列表
-            var sqlstring = `SELECT u.userName,u.password,u.state,ua.fileName,ua.fileUrl,ua.filePath from USER AS u left JOIN userdata AS ua on u.userName = ua.userName WHERE u.state = '1'`;
+            var sqlstring = `SELECT u.userName,u.password,u.state,ua.fileName,ua.fileUrl,ua.filePath,ua.filter from USER AS u left JOIN userdata AS ua on u.userName = ua.userName WHERE u.state = '1'`;
             connection.query(sqlstring, function (err, result) {
                 // var userList = [];
                 console.log('返回的数据:', result);
