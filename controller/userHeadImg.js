@@ -53,14 +53,15 @@ module.exports = {
         console.log('dataBuffer: ', dataBuffer)
 
         //查询用户
-        sqlstring = `Select userName, filePath From userdata WHERE userName='${req.body.userName}' && filePath != ''`;
+        let sqlstring = `Select userName, filePath From userdata WHERE userName='${req.body.userName}'`;
         connection.query(sqlstring, function (err, result) {
             if(err){
                 console.log('[SELECT ERROR] - ', err.message);
                 return;
             }
-            //如果不存在 那么就插入
+            //要是不存在数据的话 那么就新增
             if(result && result.length < 1) {
+                console.log('新增成功')
                 // 生成随机数
                 var timeStamp = Math.round(Math.random() * 9999999) + (new Date()).getTime();
                 //文件插入
@@ -83,7 +84,8 @@ module.exports = {
                         //路径转换
                         fileUrl = fileUrl.replace(/\\/g,"/");
                         filePath = filePath.replace(/\\/g,"/");
-                        sqlstring = `Update userdata Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
+                        let sqlstring = `INSERT INTO userdata  (userName, filePath, fileUrl, fileName) VALUES ( '${req.body.userName}', '${filePath}', '${fileUrl}', '${fileName}' )`;
+                        // let sqlstring = `Update userdata Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
                         console.log('创建文件成功')
                         console.log('fileUrl:', fileUrl);
                         console.log('filePath:', filePath);
@@ -97,25 +99,74 @@ module.exports = {
                             res.status(200).json({state: '2', msg: '修改头像成功' });
                         });
                     });
-                });  
-               
+                })
             } else {
-                sqlstring = `Select filePath From userdata WHERE userName='${req.body.userName}'`;
+                // 如果存在数据的话那么就更新
+                let sqlstring = `Select userName, filePath From userdata WHERE userName='${req.body.userName}' && filePath != ''`;
                 connection.query(sqlstring, function (err, result) {
                     if(err){
-                        console.log('[查询失败] - ', err.message);
+                        console.log('[SELECT ERROR] - ', err.message);
                         return;
                     }
-                    console.log(result);
-                    var filePath = `${result[0].filePath}/head.jpg`;
-                    console.log('filePath2', filePath)
-                    fs.writeFile(filePath, dataBuffer, function(err) {
-                        if(err){
-                          res.send(err);
-                        }else{
-                          res.send("保存成功！");
-                        }
-                    });
+                    //如果不存在 那么就插入
+                    if(result && result.length < 1) {
+                        // 生成随机数
+                        var timeStamp = Math.round(Math.random() * 9999999) + (new Date()).getTime();
+                        //文件插入
+                        var fileName = 'head.jpg'; //文件名
+                        var fileUrl = `../images/${timeStamp}/`; //文件相对路径
+                        var filePath = path.join(__dirname, `../static/images/${timeStamp}/`); //文件绝对路径
+                        console.log('filePath1', filePath);
+                        //创建文件夹
+                        fs.mkdir(filePath,function(err){  
+                            if(err) {
+                                console.error(err);
+                                return
+                            };
+                            console.log('创建目录成功'); 
+                            fs.writeFile(`${filePath}${fileName}`, dataBuffer, function(err) {
+                                if(err){
+                                  res.send(err);
+                                  return;
+                                }
+                                //路径转换
+                                fileUrl = fileUrl.replace(/\\/g,"/");
+                                filePath = filePath.replace(/\\/g,"/");
+                                let sqlstring = `Update userdata Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
+                                console.log('创建文件成功')
+                                console.log('fileUrl:', fileUrl);
+                                console.log('filePath:', filePath);
+                                console.log('sqlstring:', sqlstring);
+                                connection.query(sqlstring, function (err, result) {
+                                    if(err){
+                                        console.log('[UPDATE ERROR] - ', err.message);
+                                        res.status(200).json({state: '1', msg: '修改头像失败' });
+                                        return;
+                                    };
+                                    res.status(200).json({state: '2', msg: '修改头像成功' });
+                                });
+                            });
+                        });  
+                       
+                    } else {
+                        let sqlstring = `Select filePath From userdata WHERE userName='${req.body.userName}'`;
+                        connection.query(sqlstring, function (err, result) {
+                            if(err){
+                                console.log('[查询失败] - ', err.message);
+                                return;
+                            }
+                            console.log(result);
+                            var filePath = `${result[0].filePath}/head.jpg`;
+                            console.log('filePath2', filePath)
+                            fs.writeFile(filePath, dataBuffer, function(err) {
+                                if(err){
+                                  res.send(err);
+                                }else{
+                                  res.send("保存成功！");
+                                }
+                            });
+                        });
+                    }
                 });
             }
         });
