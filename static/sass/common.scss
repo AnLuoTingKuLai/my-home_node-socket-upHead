@@ -1,0 +1,373 @@
+@charset "UTF-8";
+@import "./base.scss";
+//样式格式化
+* {
+  box-sizing: border-box;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  border: 0 none;
+  vertical-align: top;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+a, a:link {
+  text-decoration: none !important;
+}
+
+a:focus {
+  outline: none;
+}
+
+
+//基本颜色
+@each $color, $i in $colors {
+  // 字体颜色
+  .c-#{$color} {
+    color: $i !important;
+  }
+  //背景色
+  .b-g-#{$color},
+  .bg-#{$color} {
+    background-color: $i !important;
+  }
+
+  //边框颜色
+  .b-c-#{$color},
+  .bc-#{$color} {
+    border-color: $i;
+  }
+
+  // 一边框的颜色
+  .b-1-#{$color} {
+    border: 1px solid $i;
+  }
+  .b-t-1-#{$color} {
+    border-top: 1px solid $i;
+  }
+  .b-r-1-#{$color} {
+    border-right: 1px solid $i;
+  }
+  .b-b-1-#{$color} {
+    border-bottom: 1px solid $i;
+  }
+  .b-l-1-#{$color} {
+    border-left: 1px solid $i;
+  }
+  //hover颜色
+  a,
+  button {
+    &:hover {
+      &.c-h-#{$color} {
+        color: $i !important;
+      }
+      &.b-h-#{$color} {
+        border-color: $i !important;
+      }
+    }
+  }
+}
+
+
+/*下面是定位*/
+
+.pos-s {
+  position: static !important;
+}
+
+.pos-r {
+  position: relative !important;
+}
+
+.pos-a {
+  position: absolute !important;
+}
+
+.pos-f {
+  position: fixed !important;
+}
+
+.pos-f100 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/*下面是浮动*/
+.fl,
+.f-l {
+  float: left !important;
+}
+
+.fr,
+.f-r {
+  float: right !important;
+}
+
+.clear {
+  clear: both !important;
+}
+
+.clearfix:after {
+  content: "."; /*内容为“.”就是一个英文的句号而已。也可以不写。*/
+  display: block; /*加入的这个元素转换为块级元素。*/
+  clear: both; /*清除左右两边浮动。*/
+  visibility: hidden; /*可见度设为隐藏。注意它和display:none;是有区别的。visibility:hidden;仍然占据空间，只是看不到而已；*/
+  line-height: 0; /*行高为0；*/
+  height: 0; /*高度为0；*/
+  font-size: 0; /*字体大小为0；*/
+}
+
+.clearfix { /*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
+  *zoom: 1;
+}
+
+/*display*/
+.d-no,
+.d-n {
+  display: none
+}
+
+.d-b {
+  display: block
+}
+
+.d-i {
+  display: inline;
+}
+
+.d-f {
+  display: flex;
+}
+
+.d-ib {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*下面是溢出隐藏显示*/
+.of-a {
+  overflow: auto !important;
+}
+
+.of-h {
+  overflow: hidden !important;
+}
+
+.of-y-a {
+  overflow-y: auto !important;
+}
+
+.of-y-h {
+  overflow-y: hidden !important;
+}
+
+.of-x-a {
+  overflow-x: auto !important;
+}
+
+.of-x-h {
+  overflow-x: hidden !important;
+}
+
+/*border*/
+.radius50 {
+  border-radius: 50% !important;
+  overflow: hidden;
+}
+
+.radius25 {
+  border-radius: 25% !important;
+  overflow: hidden;
+}
+
+.radius-5 {
+  border-radius: 5px !important;
+  overflow: hidden;
+}
+
+.radius0 {
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+.b-no {
+  border: 0 !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.w50 {
+  width: 50%;
+}
+.w-200 {
+  width: 200px;
+}
+.h100 {
+  height: 100%
+}
+.h-reciprocity {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+
+/*z-index*/
+.z999 {
+  z-index: 999 !important;
+}
+
+.z1000 {
+  z-index: 1000 !important;
+}
+
+//微调margin间距
+//-----------------------------------
+
+@for $i from 0 through 50 { //循环30次
+  $px: $i * 1px !important; //默认间距单位
+  $px2: $i * 1px; //默认间距单位
+  // padding 和 margin
+  @each $pm, $p in $pms {
+    @each $direction, $s in $directions { //生成语句
+      @if ($direction == 'whole') { //全方位
+        .#{$pm}-#{$i} {
+          #{$p}: $px;
+        }
+      } @else { //部分
+        .#{$pm}-#{$direction}-#{$i} {
+          @if ($s == 'tb') { //上下
+            #{$p}-top: $px;
+            #{$p}-bottom: $px;
+          } @else if ($s == 'lr') { //左右
+            #{$p}-left: $px;
+            #{$p}-right: $px;
+          } @else {
+            #{$p}-#{$s}: $px;
+          }
+        }
+      }
+    }
+  }
+
+  //-----------line-height------------------
+  .l-h-#{$i} {
+    line-height: $px;
+  }
+  //-----------文字大小------------------
+  .f-#{$i},
+  .f-s-#{$i} {
+    font-size: $px;
+  }
+  //-----------z-index------------------
+  .z#{$i} {
+    z-index: #{$i} !important;
+  }
+}
+
+@for $i from 0 through 100 {
+  @if ($i % 10 == 0) {
+    .opacity-#{$i} {
+      opacity: ($i / 100);
+    }
+  }
+}
+
+//-----------------------------------
+
+.f-w {
+  font-weight: 400 !important;;
+}
+
+.f-w2 {
+  font-weight: 900 !important;;
+}
+
+/*下面是文本换行什么的*/
+.white-space-nowrap {
+  white-space: nowrap !important;
+}
+
+/*溢出不换行*/
+.text-of-ellipsis {
+  text-overflow: ellipsis !important;
+}
+
+/*溢出使用省略号*/
+.word-wrap-break-word {
+  word-wrap: break-word !important;
+}
+
+/*溢出换行但不截断单词*/
+.word-break-break-all {
+  word-break: break-all !important;
+}
+
+/*溢出换行 英文*/
+
+/*文字排列方向*/
+.t-l {
+  text-align: left !important;
+}
+
+.t-r {
+  text-align: right !important;
+}
+
+.t-c {
+  text-align: center !important;
+}
+
+/*//文字垂直排列方式*/
+.v-a-t {
+  vertical-align: top !important;
+}
+
+.v-a-m {
+  vertical-align: middle !important;
+}
+
+.v-a-b {
+  vertical-align: bottom !important;
+}
+
+.letter-s-2 {
+  letter-spacing: 2px !important;
+}
+
+/*文章字间距*/
+
+.text-i-2 {
+  text-indent: 2em !important;
+}
+
+//自定义common
+.w-a {
+  width: 100% !important;
+}
+
+.h-a {
+  height: 100% !important;
+}
+
+.p-m {
+  padding-bottom: 99999px !important;
+  margin-bottom: -99999px !important;
+}
+
+
+
+

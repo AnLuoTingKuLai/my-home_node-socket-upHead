@@ -1,0 +1,116 @@
+@charset "UTF-8";
+@font-face {
+  font-family: lxk;
+  src: url("../font/lxk.ttf"); }
+body {
+  font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu; }
+
+header .head-nav {
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5); }
+  header .head-nav.on {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6); }
+    header .head-nav.on .navbar-nav li a {
+      padding: 20px 25px; }
+  header .head-nav .navbar-brand img {
+    max-height: 60px; }
+  header .head-nav .navbar-nav li.active a {
+    color: #55acee; }
+  header .head-nav .navbar-nav li a {
+    padding: 40px 25px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    background-color: transparent;
+    transition: all .8s linear; }
+    header .head-nav .navbar-nav li a:hover {
+      color: #55acee; }
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .banner .banner-image-layer {
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    transition: all .1s linear; }
+  .banner .banner-image {
+    position: absolute;
+    display: block;
+    top: -10%;
+    right: -10%;
+    bottom: -10%;
+    left: -10%;
+    width: 120%;
+    min-height: 100%;
+    z-index: -99999;
+    background: url(../images/1.jpg) no-repeat 50% 100%;
+    background-size: cover; }
+  .banner .banner-caption {
+    position: absolute;
+    top: 50%;
+    margin-top: -90px;
+    width: 100%;
+    color: #fff; }
+    .banner .banner-caption .text-center {
+      font-size: 80px;
+      text-shadow: 0.1em 0.1em 0.05em rgba(0, 0, 0, 0.3); }
+      .banner .banner-caption .text-center.font {
+        font-family: lxk; }
+      .banner .banner-caption .text-center span {
+        position: relative;
+        top: 25px;
+        font-size: 120px; }
+      .banner .banner-caption .text-center.remarks {
+        position: relative;
+        top: -20px;
+        left: -65px;
+        font-size: 12px; }
+
+.skill {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  text-align: center; }
+  .skill:before {
+    content: "";
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle; }
+  .skill .item {
+    position: relative;
+    display: inline-block;
+    width: 360px;
+    height: 360px;
+    padding: 30px;
+    background-color: #17b693;
+    color: #fff;
+    font-size: 12px;
+    z-index: 2;
+    transition: transform 1s, box-shadow 1s; }
+    .skill .item.item-2 {
+      top: -25px;
+      height: 390px;
+      box-shadow: 0px 0 30px 10px rgba(0, 0, 0, 0.25);
+      background: #15a585;
+      z-index: 3; }
+    .skill .item:hover {
+      transform: scale(1.1, 1.1);
+      box-shadow: 0px 0 30px 10px rgba(0, 0, 0, 0.25);
+      z-index: 4; }
+    .skill .item.item-3 {
+      background: #129377; }
+
+/*# sourceMappingURL=index.css.map */

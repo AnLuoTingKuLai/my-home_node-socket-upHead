@@ -18,9 +18,9 @@ userName| password| state
 
 userdata表：
 
-userName | fileUrl | fileName | filePath | upDate
+userName | fileUrl | fileName | filePath | filter| upDate
 :-: | :-: | :-: | :-: | :-:
-用户名（主键, 外键) | 文件相对路径 | 文件名 | 文件存储路径 |  创建时间
+用户名（主键, 外键) | 文件相对路径 | 文件名 | 文件存储路径 |  滤镜效果|  创建时间
 
 修改config文件夹里面db.js的配置为新建的数据库
 

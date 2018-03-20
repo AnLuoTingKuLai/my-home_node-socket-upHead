@@ -26,6 +26,16 @@ router.route('/login')
 		login.get(req, res, next);
 	});
 
+//主页
+router.route('/index')
+.post(function (req, res, next) {
+    res.sendFile(path.join(__dirname, '../static/views/index.html'));
+})
+.get(function (req, res, next) {
+    res.sendFile(path.join(__dirname, '../static/views/index.html'));
+});
+
+
 //聊天窗口
 router.route('/soket')
 .post(function (req, res, next) {
