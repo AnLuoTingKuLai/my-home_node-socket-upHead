@@ -3,15 +3,18 @@
 	font-family: lxk;
 	src: url('../font/lxk.ttf')
 }
+
 body {
-	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu
+	font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
+	background: #000;
 }
+
 header {
 	.head-nav {
 		position: absolute;
 		width: 100%;
 		z-index: 99;
-		&.on {
+		&.small {
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -19,13 +22,10 @@ header {
 			background-color: rgba(0, 0, 0, .6);
 			.navbar-nav {
 				li {
-					a {
-						padding: 20px 25px;
-					}
+					padding: 20px 25px;
 				}
 			}
-		}
-		// height: 100px;
+		} // height: 100px;
 		background-color: rgba(0, 0, 0, .5);
 		.navbar-brand {
 			img {
@@ -34,27 +34,23 @@ header {
 		}
 		.navbar-nav {
 			li {
-				&.active {
-					a {
-	   					color: #55acee;
-					}
-				}
-				a {
-					&:hover {
-						color: #55acee;
-					}
-					padding: 40px 25px;
-					font-size: 14px;
-					line-height: 20px;
-					color: #fff;
-					background-color: transparent;
-					transition: all .8s linear;
+				padding: 40px 25px;
+				font-size: 14px;
+				line-height: 20px;
+				color: #fff;
+				cursor: pointer;
+				background-color: transparent;
+				transition: all .8s linear;
+				&.active,
+				&:hover {
+					color: #55acee;
 				}
 			}
 		}
 	}
 }
-//轮播图
+
+//banner图
 .banner {
 	position: relative;
 	width: 100%;
@@ -80,8 +76,7 @@ header {
 		min-height: 100%;
 		z-index: -99999;
 		background: url(../images/1.jpg) no-repeat 50% 100%;
-		background-size: cover;
-		// background: url('../images/1.jpg');
+		background-size: cover; // background: url('../images/1.jpg');
 	}
 	.banner-caption {
 		position: absolute;
@@ -89,9 +84,10 @@ header {
 		margin-top: -90px;
 		width: 100%;
 		color: #fff;
+		transition: all .1s linear;
 		.text-center {
 			font-size: 80px;
-			text-shadow: 0.1em 0.1em 0.05em rgba(0,0,0,.3);
+			text-shadow: 0.1em 0.1em 0.05em rgba(0, 0, 0, .3);
 			&.font {
 				font-family: lxk;
 			}
@@ -103,43 +99,174 @@ header {
 			&.remarks {
 				position: relative;
 				top: -20px;
-				left: -65px; 	
-				// display: inline-block;
+				left: -65px; // display: inline-block;
 				font-size: 12px;
 			}
 		}
 	}
 }
+
+// 简介
+.brief {
+	position: relative;
+	width: 100%;
+	height: 120%;
+	background: url(../images/bg-black2.jpg) no-repeat center bottom fixed;
+	background-size: cover;
+	color: #fff;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, .5);
+	}
+	.brief-content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 900px;
+		height: 550px;
+		padding: 15px;
+		margin-top: -275px;
+		margin-left: -450px;
+		opacity: .9;
+		background-color: #333;
+		box-shadow: 0 0 10px #000;
+		box-sizing: border-box;
+		font-size: 0;
+		.brief-img,
+		.brief-text {
+			display: inline-block;
+			height: 100%;
+			overflow: hidden;
+			font-size: 12px;
+		}
+		// 图片
+		.brief-img {
+			width: 40%;
+			border: 1px solid rgba(255, 255, 255, .8);
+			border-right: 0;
+		}
+		// 文字信息
+		.brief-text {
+			width: 60%;
+			border: 1px solid rgba(255, 255, 255, .8);
+			border-left: 0;
+			padding: 15px;
+			//进度条
+			.skill-bars {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				li {
+					position: relative;
+					padding-top: 30px;
+					margin-bottom: 20px;
+					// 标题
+					.bar-title {
+						position: relative;
+						top: -10px;
+						font-size: 16px;
+						color: #000;
+					}
+					// 百分比标志
+					.bar-text {
+						position: absolute;
+						top: 0;
+						right: 0;
+						display: block;
+						background: #000;
+						padding: 6px;
+						border-radius: 3px;
+						&:before {
+							content: "";
+							position: absolute;
+							left: 50%;
+							bottom: -5px;
+							margin-left: -5px;
+							border-right: 5px solid transparent;
+							border-left: 5px solid transparent;
+							border-top: 5px solid #000;
+						}
+					}
+					// 进度条
+					.progress-bar {
+						position: relative;
+						height: 6px;
+						width: 100%;
+						padding: 0;
+						margin: 0;
+						border-radius: 5px;
+						overflow: hidden;
+						background: #a1a1a1;
+						//进度
+						.progress {
+							width: 0;
+							height: 100%;
+							background: #000;
+							transition: all 1s linear;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // 技能
 .skill {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	font-size: 0;
 	text-align: center;
-	//垂直居中
-	&:before { 
-		content:"";
+	background: url(../images/10.jpg) no-repeat;
+	background-size: cover;
+	&:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0);
+		transition: 3s;
+	}
+	&:hover {
+		&:after {
+			background-color: rgba(0, 0, 0, .5);
+		}
+	} //垂直居中
+	&:before {
+		content: "";
 		height: 100%;
 		width: 0;
 		display: inline-block;
 		vertical-align: middle;
 	}
-	.item {
+	.skill-item {
 		position: relative;
 		display: inline-block;
 		width: 360px;
 		height: 360px;
 		padding: 30px;
+		vertical-align: middle;
 		background-color: #17b693;
 		color: #fff;
 		font-size: 12px;
 		z-index: 2;
-		transition: transform 1s, box-shadow 1s;
-		&.item-2 {
+		transition: transform .7s, box-shadow .7s;
+		&.skill-item-1 {
+			background: #f0c54f;
+		}
+		&.skill-item-2 {
 			top: -25px;
 			height: 390px;
 			box-shadow: 0px 0 30px 10px rgba(0, 0, 0, 0.25);
-			background: #15a585;
+			background: #f76d56;
 			z-index: 3;
 		}
 		&:hover {
@@ -147,8 +274,8 @@ header {
 			box-shadow: 0px 0 30px 10px rgba(0, 0, 0, 0.25);
 			z-index: 4;
 		}
-		&.item-3 {
-			background: #129377;
+		&.skill-item-3 {
+			background: #3dac68;
 		}
 	}
 }

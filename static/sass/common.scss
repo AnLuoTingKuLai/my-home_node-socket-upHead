@@ -278,6 +278,13 @@ a:focus {
   }
 }
 
+
+@for $i from 0 through 100 {
+  .percent-#{$i} {
+    width: $i * 1%;
+  }
+}
+
 @for $i from 0 through 100 {
   @if ($i % 10 == 0) {
     .opacity-#{$i} {
