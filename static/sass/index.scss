@@ -110,7 +110,7 @@ header {
 .brief {
 	position: relative;
 	width: 100%;
-	height: 120%;
+	height: 140%;
 	background: url(../images/bg-black2.jpg) no-repeat center bottom fixed;
 	background-size: cover;
 	color: #fff;
@@ -128,11 +128,11 @@ header {
 		top: 50%;
 		left: 50%;
 		width: 900px;
-		height: 550px;
+		height: 530px;
 		padding: 15px;
-		margin-top: -275px;
+		margin-top: -260px;
 		margin-left: -450px;
-		opacity: .9;
+		opacity: .8;
 		background-color: #333;
 		box-shadow: 0 0 10px #000;
 		box-sizing: border-box;
@@ -220,26 +220,32 @@ header {
 .skill {
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 110%;
 	font-size: 0;
 	text-align: center;
 	background: url(../images/10.jpg) no-repeat;
 	background-size: cover;
-	&:after {
-		content: "";
+	overflow: hidden;
+	//光源
+	.light,
+	.light2 {
 		position: absolute;
 		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background-color: rgba(0, 0, 0, 0);
-		transition: 3s;
+		width: 100%;
+		height: 100%;
+		background: url(../images/light.png) repeat;
+		transform: translate3d(0, 100%, 0);
+		// z-index: 2;
 	}
-	&:hover {
-		&:after {
-			background-color: rgba(0, 0, 0, .5);
-		}
-	} //垂直居中
+	//动画效果
+	.light {
+		animation: lightAnimation 3s infinite alternate, lightPosition 60s infinite linear; 
+	}
+	.light2 {
+		animation: lightAnimation 3s  1.5s infinite alternate, lightPosition 60s 28s infinite linear; 
+	}
+	// } 
+	//垂直居中
 	&:before {
 		content: "";
 		height: 100%;
@@ -247,35 +253,62 @@ header {
 		display: inline-block;
 		vertical-align: middle;
 	}
+	//遮罩层
+	&:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, .7);
+		animation: lightAnimation 4s infinite alternate ease-in-out,  //无限 交替 低速开始低速结束 动画
+	}
+	//内容
 	.skill-item {
 		position: relative;
 		display: inline-block;
 		width: 360px;
 		height: 360px;
 		padding: 30px;
-		vertical-align: middle;
-		background-color: #17b693;
+	    border: 1px solid rgba(255, 255, 255, 0.3);
 		color: #fff;
 		font-size: 12px;
+		vertical-align: middle;
+		background-color: rgba(255, 255, 255, 0.1);
+	    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+		transition: .7s;
 		z-index: 2;
-		transition: transform .7s, box-shadow .7s;
-		&.skill-item-1 {
-			background: #f0c54f;
-		}
 		&.skill-item-2 {
 			top: -25px;
 			height: 390px;
-			box-shadow: 0px 0 30px 10px rgba(0, 0, 0, 0.25);
-			background: #f76d56;
 			z-index: 3;
 		}
 		&:hover {
 			transform: scale(1.1, 1.1);
-			box-shadow: 0px 0 30px 10px rgba(0, 0, 0, 0.25);
+			border: 1px solid rgba(255, 255, 255, 0.8);
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
 			z-index: 4;
 		}
-		&.skill-item-3 {
-			background: #3dac68;
-		}
+	}
+}
+
+
+
+//萤火 光
+@keyframes lightAnimation {
+	0% {
+		opacity: .3;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes lightPosition {
+	0% {
+		transform: translate3d(0, 100%, 0);
+	}
+	100% {
+		transform: translate3d(0, -100%, 0);
 	}
 }

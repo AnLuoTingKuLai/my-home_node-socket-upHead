@@ -12,8 +12,9 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-	console.log('路径：', path.join(__dirname, '../static/login/login.html'))
-	res.sendFile(path.join(__dirname, '../static/login/login.html'));
+    res.redirect('/index');
+	// console.log('路径：', path.join(__dirname, '../static/login/login.html'))
+	// res.sendFile(path.join(__dirname, '../static/login/login.html'));
 });
 
 /* login接口的时候 */
