@@ -2,6 +2,9 @@
 @font-face {
   font-family: lxk;
   src: url("../font/lxk.ttf"); }
+@font-face {
+  font-family: ttf04b08;
+  src: url("../font/04b08.ttf"); }
 body {
   font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
   background: #000; }
@@ -28,7 +31,7 @@ header .head-nav {
     color: #fff;
     cursor: pointer;
     background-color: transparent;
-    transition: all .8s linear; }
+    transition: all .5s linear; }
     header .head-nav .navbar-nav li.active, header .head-nav .navbar-nav li:hover {
       color: #55acee; }
 
@@ -55,7 +58,7 @@ header .head-nav {
     width: 120%;
     min-height: 100%;
     z-index: -99999;
-    background: url(../images/1.jpg) no-repeat 50% 100%;
+    background: url(../images/3.png) no-repeat 10% 10%;
     background-size: cover; }
   .banner .banner-caption {
     position: absolute;
@@ -209,24 +212,70 @@ header .head-nav {
     display: inline-block;
     width: 360px;
     height: 360px;
-    padding: 30px;
+    padding: 30px 30px 60px 30px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-    font-size: 12px;
+    font-size: 0;
     vertical-align: middle;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     transition: .7s;
     z-index: 2; }
-    .skill .skill-item.skill-item-2 {
-      top: -25px;
-      height: 390px;
-      z-index: 3; }
+    .skill .skill-item * {
+      font-size: 12px; }
+    .skill .skill-item:before {
+      content: "";
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle; }
     .skill .skill-item:hover {
       transform: scale(1.1, 1.1);
       border: 1px solid rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.1);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
       z-index: 4; }
+    .skill .skill-item.skill-item-2 {
+      top: -25px;
+      height: 390px;
+      margin: 5px;
+      z-index: 3; }
+    .skill .skill-item img {
+      display: inline-block;
+      max-width: 100%;
+      max-height: 100%;
+      vertical-align: middle;
+      opacity: .8; }
+    .skill .skill-item .text {
+      font-family: ttf04b08;
+      margin-top: 10px;
+      letter-spacing: .05em;
+      font-size: 18px;
+      transform: scale(0.5);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00a67c, 0 0 70px #00a67c, 0 0 80px #00a67c, 0 0 100px #00a67c, 0 0 150px #00a67c; }
+
+.footer .contact {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  opacity: .7; }
+  .footer .contact a {
+    color: #999; }
+    .footer .contact a:hover {
+      opacity: 0.8; }
+  .footer .contact .wrap-col {
+    display: block; }
+    .footer .contact .wrap-col li {
+      display: inline-block;
+      margin: 3px;
+      padding: 5px;
+      border: 1px solid #999;
+      color: #999;
+      font-size: 12px;
+      text-transform: capitalize;
+      cursor: pointer; }
+      .footer .contact .wrap-col li:hover {
+        color: #0aac8e;
+        text-decoration: none;
+        transition-duration: 0.3s; }
 
 @keyframes lightAnimation {
   0% {

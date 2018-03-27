@@ -714,6 +714,39 @@ a:hover.b-h-ccc,
 button:hover.b-h-ccc {
   border-color: #ccc !important; }
 
+.c-999 {
+  color: #999 !important; }
+
+.b-g-999,
+.bg-999 {
+  background-color: #999 !important; }
+
+.b-c-999,
+.bc-999 {
+  border-color: #999; }
+
+.b-1-999 {
+  border: 1px solid #999; }
+
+.b-t-1-999 {
+  border-top: 1px solid #999; }
+
+.b-r-1-999 {
+  border-right: 1px solid #999; }
+
+.b-b-1-999 {
+  border-bottom: 1px solid #999; }
+
+.b-l-1-999 {
+  border-left: 1px solid #999; }
+
+a:hover.c-h-999,
+button:hover.c-h-999 {
+  color: #999 !important; }
+a:hover.b-h-999,
+button:hover.b-h-999 {
+  border-color: #999 !important; }
+
 .c-f2 {
   color: #f2f2f2 !important; }
 

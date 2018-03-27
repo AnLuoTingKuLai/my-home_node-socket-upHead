@@ -8,7 +8,7 @@ $(function () {
  		var $image = img;
  		var options = {
  			aspectRatio: 1, // 纵横比
- 			viewMode: 2,
+ 			viewMode: 1,
  			preview: '.img-preview', // 预览图的class名
  			crop: function (e) {
  			}

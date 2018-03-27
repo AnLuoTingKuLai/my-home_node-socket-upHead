@@ -89,11 +89,20 @@ $(function () {
     $(document)
         .on({
             scroll() {
+                afterScrollTop = $(document).scrollTop();
+                if (afterScrollTop > 50) {
+                    $('.head-nav')
+                        .addClass('small');
+                } else {
+                   $('.head-nav')
+                    .removeClass('small'); 
+                }
+
                 //不重复执行
                 if(scrollFlage){ 
                     clearTimeout(scrollFlage)
                 }
-                scrollFlage = setTimeout(initScroll,300);
+                scrollFlage = setTimeout(initScroll, 100);
                 
             }
         })
@@ -123,13 +132,6 @@ $(function () {
     //页面滚动条事件
     function initScroll(){
         afterScrollTop = $(document).scrollTop();
-        if (afterScrollTop > 50) {
-            $('.head-nav')
-                .addClass('small');
-        } else {
-           $('.head-nav')
-            .removeClass('small'); 
-        }
         //简介动画
         indexObj.briefAnimation();
         //菜单栏选择

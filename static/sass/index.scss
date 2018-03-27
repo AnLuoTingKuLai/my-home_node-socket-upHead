@@ -3,6 +3,11 @@
 	font-family: lxk;
 	src: url('../font/lxk.ttf')
 }
+@font-face {
+	font-family: ttf04b08;
+	src: url('../font/04b08.ttf')
+}
+
 
 body {
 	font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
@@ -40,7 +45,7 @@ header {
 				color: #fff;
 				cursor: pointer;
 				background-color: transparent;
-				transition: all .8s linear;
+				transition: all .5s linear;
 				&.active,
 				&:hover {
 					color: #55acee;
@@ -75,7 +80,7 @@ header {
 		width: 120%;
 		min-height: 100%;
 		z-index: -99999;
-		background: url(../images/1.jpg) no-repeat 50% 100%;
+		background: url(../images/3.png) no-repeat 10% 10%;
 		background-size: cover; // background: url('../images/1.jpg');
 	}
 	.banner-caption {
@@ -270,29 +275,97 @@ header {
 		display: inline-block;
 		width: 360px;
 		height: 360px;
-		padding: 30px;
+		padding: 30px 30px 60px 30px;
 	    border: 1px solid rgba(255, 255, 255, 0.3);
 		color: #fff;
-		font-size: 12px;
+		// font-size: 12px;
+		font-size: 0;
 		vertical-align: middle;
-		background-color: rgba(255, 255, 255, 0.1);
+		background-color: rgba(255, 255, 255, 0.05);
 	    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 		transition: .7s;
 		z-index: 2;
-		&.skill-item-2 {
-			top: -25px;
-			height: 390px;
-			z-index: 3;
+		* {
+			font-size: 12px;
+		}
+		&:before {
+			content: "";
+			height: 100%;
+			display: inline-block;
+			vertical-align: middle;
 		}
 		&:hover {
 			transform: scale(1.1, 1.1);
 			border: 1px solid rgba(255, 255, 255, 0.8);
+			background-color: rgba(255, 255, 255, 0.1);
 			box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
 			z-index: 4;
+		}
+		&.skill-item-2 {
+			top: -25px;
+			height: 390px;
+			margin: 5px;
+			z-index: 3;
+		}
+		img {
+			display: inline-block;
+			max-width: 100%;
+			max-height: 100%;
+			vertical-align: middle;
+			opacity: .8;
+
+		}
+		.text {
+			font-family: ttf04b08;
+			margin-top: 10px;
+			letter-spacing: .05em;
+			font-size: 18px;
+    		transform: scale(.5);
+    		//文字外发光效果
+    		text-shadow: 0 0 10px rgba(255, 255, 255, .5),
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+			// font-family: auto;
 		}
 	}
 }
 
+.footer{
+	.contact {
+		margin-top: 50px;
+		margin-bottom: 50px;
+		opacity: .7;
+		a {
+			color: #999;
+			&:hover {
+				opacity: .8
+			}
+		}
+		.wrap-col {
+			display: block;
+			li {
+				display: inline-block;
+				margin: 3px;
+				padding: 5px;
+				border: 1px solid #999;
+				color: #999;
+				font-size: 12px;
+				text-transform: capitalize;
+				cursor: pointer;
+				&:hover {
+					color: #0aac8e;
+				    text-decoration: none;
+				    transition-duration: 0.3s;
+				}
+			}
+		}
+	}
+}
 
 
 //萤火 光

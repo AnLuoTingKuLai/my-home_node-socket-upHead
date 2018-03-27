@@ -33,17 +33,6 @@ $(function () {
                 }
             }
         })
-    //默认头像设置
-    $('.img-o-head')
-        .add($('#img-head'))
-        .on({
-            error() {
-                $(this)
-                    .attr({
-                        src: '../images/head.jpg'
-                    })
-            }
-        })
     $('.filter')
         .on({
             click(e) {
@@ -55,7 +44,7 @@ $(function () {
                     })
                 })).then(req => {
                     if(req.state == 2) {
-                        $('[data-own-head]').attr({
+                        $('[data-own-head = "true"]').attr({
                             class: `img-head img-o-head filter filter-${$(this).data('filter')}`
                         })
                     }
@@ -63,7 +52,7 @@ $(function () {
             }
         })
     //生成 soket实例
-    var socket = io.connect("ws://127.0.0.1:80");
+    var socket = io.connect("ws://127.0.0.1:8099");
     //通知服务器有用户登录
     if (userInfo && userInfo.userName) {
         socket.emit('login', userInfo);
@@ -85,7 +74,7 @@ $(function () {
             .then(req => {
                 if (req.state == 2) {
                     let src = '../images/head.js'
-                    if (req.data) {
+                    if (req.data && req.data.fileUrl) {
                         src = `${req.data.fileUrl}${req.data.fileName}`;
                     };
                     $('#img-head')
@@ -141,12 +130,13 @@ $(function () {
         for (user of userList) {
             //获取滤镜
             let filter = user.filter ? `filter filter-${user.filter}` : '';
-            let flage = false;
+            let flageOwn = false;
             if (user.userName == userInfo.userName) {
-                flage = true;
+                flageOwn = true;
             }
+
             userListHtml += `
-                <img data-own-head="true" class="img-o-head ${filter}" src="${user.fileUrl}${user.fileName}" alt="$(userName)">
+                <img data-own-head="${flageOwn}" class="img-o-head ${filter}" src="${user.fileUrl}${user.fileName}" alt="$(userName)">
             `
         }
         //在线数量
@@ -168,6 +158,17 @@ $(function () {
         //系统消息
         $("#chatWrap")
             .append(sysHtml);
+        //默认头像设置
+        $('.img-o-head')
+            .add($('#img-head'))
+            .on({
+                error() {
+                    $(this)
+                        .attr({
+                            src: '/images/head.jpg'
+                        })
+            }
+        })
         $('#chatWrap')
             .scrollTop(99999);
     }
