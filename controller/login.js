@@ -45,8 +45,5 @@ module.exports = {
                 });
             }
        });
-    },
-    get(req, res, next) {
-        res.sendFile(path.join(__dirname, '../static/login/login.html'));
     }
 }

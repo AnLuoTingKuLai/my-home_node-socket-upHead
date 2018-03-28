@@ -35,7 +35,9 @@ userName | fileUrl | fileName | filePath | filter| upDate
 |-- doc								//说明文档
 |-- routes							//路由用响应
 |-- static							//静态文件目录
-|    |-- css						//css文件
+|    |-- css						//编译后的css文件
+|    |-- sass						//sass文件
+|    |-- font						//font字体文件夹
 |    |-- images						//图片文件
 |    |-- js							//js文件
 |    |-- plugins					//插件

@@ -1,0 +1,57 @@
+@charset "utf-8";
+.textFont {
+	width: 300px;
+    margin: auto;
+	font-size: 12px;
+	text-align: center;
+	animation: deviation 1.5s (5s + 21 * 0.2s) forwards;
+	.text {
+		// text-align: center;
+		.name,
+		.name2 {
+			font-size: 7px;
+			position: relative;
+			.textAnimation {
+				margin: 0 -2.6px 0 0;
+				opacity: 0;
+			}
+		}
+		.name {
+			.textAnimation {
+				@for $i from 1 through 5 {
+					&:nth-child(#{$i}) {
+						animation: textAnimation 1s (3s + $i * 0.2s) forwards;
+					}
+				}
+			}
+		}
+		.name2 {
+			top: 2px;
+			.textAnimation {
+				@for $i from 1 through 21 {
+					&:nth-child(#{$i}) {
+						animation: textAnimation 1s (4s + $i * 0.2s) forwards;
+					}
+				}
+			}
+		}
+
+	}
+	@keyframes textAnimation {
+		0% {
+			font-size: 30px;
+		}
+		100% {
+			opacity: 1;
+			font-size: 12px;
+		}
+	}
+	@keyframes deviation {
+		0% {
+			margin-top: 0;
+		}
+		100% {
+			margin-top: 25px;
+		}
+	}
+}

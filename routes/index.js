@@ -13,8 +13,6 @@ connection.connect();
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.redirect('/index');
-	// console.log('路径：', path.join(__dirname, '../static/login/login.html'))
-	// res.sendFile(path.join(__dirname, '../static/login/login.html'));
 });
 
 /* login接口的时候 */
@@ -24,26 +22,26 @@ router.route('/login')
         login.post(req, res, next);
 	})
 	.get(function (req, res, next) {
-		login.get(req, res, next);
+		res.sendFile(path.join(__dirname, '../static/login/views/login.html'));
 	});
 
 //主页
 router.route('/index')
 .post(function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../static/views/index.html'));
+    res.sendFile(path.join(__dirname, '../static/homePage/views/index.html'));
 })
 .get(function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../static/views/index.html'));
+    res.sendFile(path.join(__dirname, '../static/homePage/views/index.html'));
 });
 
 
 //聊天窗口
-router.route('/soket')
+router.route('/socket')
 .post(function (req, res, next) {
-	res.sendFile(path.join(__dirname, '../static/views/soket.html'));
+	res.sendFile(path.join(__dirname, '../static/socket/views/socket.html'));
 })
 .get(function (req, res, next) {
-	res.sendFile(path.join(__dirname, '../static/views/soket.html'));
+	res.sendFile(path.join(__dirname, '../static/socket/views/socket.html'));
 });
 
 //获取用户信息
@@ -82,5 +80,19 @@ router.route('/setFilter')
     .post(function (req, res, next) {
         // console.log('==================111')
         userHeadImg.setFilter(req, res, next);
-    })
+    });
+
+
+//图片特效
+router.route('/photo')
+.post(function (req, res, next) {
+    res.sendFile(path.join(__dirname, '../static/photo/views/photo.html'));
+})
+.get(function (req, res, next) {
+    res.sendFile(path.join(__dirname, '../static/photo/views/photo.html'));
+});
+
+
+
+
 module.exports = router;

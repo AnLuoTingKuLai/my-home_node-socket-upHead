@@ -25,7 +25,7 @@ $(function () {
 					success(data){
 						//页面跳转
 						if (data.state == 2) {
-							window.location.href='/soket';
+							window.location.href='/socket';
 							sessionStorage.setItem('userName', userName); 
 							alert('登录成功');
 						} else {
