@@ -222,8 +222,6 @@ header .head-nav {
     transition: .7s;
     cursor: pointer;
     z-index: 2; }
-    .works .works-item a {
-      color: #fff; }
     .works .works-item * {
       font-size: 12px; }
     .works .works-item:before {
