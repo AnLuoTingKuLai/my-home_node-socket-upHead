@@ -27,9 +27,9 @@ app.use(cookieParser());
 //设置静态文件目录
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static(path.join(__dirname, 'static/homePage'))); //主页
+app.use(express.static(path.join(__dirname, 'static/photo'))); //图片特效
 app.use(express.static(path.join(__dirname, 'static/login'))); //登录
 app.use(express.static(path.join(__dirname, 'static/socket'))); //socket
-app.use(express.static(path.join(__dirname, 'static/photo'))); //图片特效
 
 app.use('/', routes);
 

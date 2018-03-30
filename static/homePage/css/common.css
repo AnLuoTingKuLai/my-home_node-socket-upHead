@@ -4199,11 +4199,7 @@ button:hover.b-h-defInput {
 
 .box-animation {
   position: relative;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  padding: 15px; }
+  padding: 10%; }
   .box-animation:after, .box-animation:before {
     content: '';
     position: absolute;

@@ -375,20 +375,14 @@ a:focus {
   margin-bottom: -99999px !important;
 }
 
-
-
-
+//鼠标移动过去后 的效果
 .box-animation {
   position: relative;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    padding: 15px;
+    padding: 10%;
     &:after,&:before {
       content: '';
       position: absolute;
-    top: 8%;
+      top: 8%;
       right: 10%;
       bottom: 8%;
       left: 10%;

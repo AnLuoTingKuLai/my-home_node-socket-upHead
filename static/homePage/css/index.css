@@ -62,20 +62,20 @@ header .head-nav {
     width: 120%;
     min-height: 100%;
     z-index: -99999;
-    background: url(../images/3.png) no-repeat 10% 10%;
+    background: url(../images/banner.png) no-repeat 10% 10%;
     background-size: cover;
     z-index: 3;
     animation: kenburns-1 60s 6s linear infinite; }
   .banner .banner-image-2 {
-    background-image: url(../images/1.jpg);
+    background-image: url(../images/banner2.jpg);
     animation-name: kenburns-2;
     z-index: 2; }
   .banner .banner-image-3 {
-    background-image: url(../images/2.jpg);
+    background-image: url(../images/banner3.jpg);
     animation-name: kenburns-3;
     z-index: 1; }
   .banner .banner-image-4 {
-    background-image: url(../images/4.jpg);
+    background-image: url(../images/banner4.jpg);
     animation-name: kenburns-4;
     z-index: 0; }
   .banner .banner-caption {
