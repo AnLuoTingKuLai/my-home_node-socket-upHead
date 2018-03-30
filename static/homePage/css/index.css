@@ -9,6 +9,10 @@ body {
   font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
   background: #000; }
 
+.wrap {
+  width: 100%;
+  height: 100%; }
+
 header .head-nav {
   position: absolute;
   width: 100%;
@@ -59,7 +63,21 @@ header .head-nav {
     min-height: 100%;
     z-index: -99999;
     background: url(../images/3.png) no-repeat 10% 10%;
-    background-size: cover; }
+    background-size: cover;
+    z-index: 3;
+    animation: kenburns-1 60s 6s linear infinite; }
+  .banner .banner-image-2 {
+    background-image: url(../images/1.jpg);
+    animation-name: kenburns-2;
+    z-index: 2; }
+  .banner .banner-image-3 {
+    background-image: url(../images/2.jpg);
+    animation-name: kenburns-3;
+    z-index: 1; }
+  .banner .banner-image-4 {
+    background-image: url(../images/4.jpg);
+    animation-name: kenburns-4;
+    z-index: 0; }
   .banner .banner-caption {
     position: absolute;
     top: 50%;
@@ -177,7 +195,7 @@ header .head-nav {
   height: 110%;
   font-size: 0;
   text-align: center;
-  background: url(../images/10.jpg) no-repeat;
+  background: url(../images/bg.jpg) no-repeat;
   background-size: cover;
   overflow: hidden; }
   .works .light,
@@ -222,8 +240,6 @@ header .head-nav {
     transition: .7s;
     cursor: pointer;
     z-index: 2; }
-    .works .works-item * {
-      font-size: 12px; }
     .works .works-item:before {
       content: "";
       height: 100%;
@@ -248,7 +264,7 @@ header .head-nav {
       opacity: .8; }
     .works .works-item .text {
       font-family: ttf04b08;
-      margin-top: 10px;
+      margin-top: 5px;
       letter-spacing: .05em;
       font-size: 18px;
       transform: scale(0.5);
@@ -288,5 +304,75 @@ header .head-nav {
     transform: translate3d(0, 100%, 0); }
   100% {
     transform: translate3d(0, -100%, 0); } }
+@keyframes kenburns-1 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  1.5625% {
+    opacity: 1; }
+  23.4375% {
+    opacity: 1; }
+  26.5625% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  98.4375% {
+    opacity: 0;
+    -webkit-transform: scale(1.21176);
+    transform: scale(1.21176); }
+  100% {
+    opacity: 1; } }
+@keyframes kenburns-2 {
+  23.4375% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  26.5625% {
+    opacity: 1; }
+  48.4375% {
+    opacity: 1; }
+  51.5625% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); } }
+@keyframes kenburns-3 {
+  48.4375% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  51.5625% {
+    opacity: 1; }
+  73.4375% {
+    opacity: 1; }
+  76.5625% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); } }
+@keyframes kenburns-4 {
+  73.4375% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  76.5625% {
+    opacity: 1; }
+  98.4375% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
 
 /*# sourceMappingURL=index.css.map */

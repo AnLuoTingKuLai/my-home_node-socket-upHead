@@ -119,13 +119,13 @@ $(function () {
                 }
                 //背景图
                 $layer.css({
-                    'webkitTransform': `translate3d(${(mousePos.x - bannerX)/35}px, ${(mousePos.y - bannerY)/35}px, 0px)`,
-                    'transform': `translate3d(${(mousePos.x - bannerX)/35}px, ${(mousePos.y - bannerY)/35}px, 0px)`
+                    'webkitTransform': `translate3d(${(mousePos.x - bannerX)/50}px, ${(mousePos.y - bannerY)/50}px, 0px)`,
+                    'transform': `translate3d(${(mousePos.x - bannerX)/50}px, ${(mousePos.y - bannerY)/50}px, 0px)`
                 })
                 //文字
                 $caption.css({
-                    'webkitTransform': `translate3d(${(mousePos.x - bannerX)/50}px, ${(mousePos.y - bannerY)/50}px, 5pxpx)`,
-                    'transform': `translate3d(${(mousePos.x - bannerX)/50}px, ${(mousePos.y - bannerY)/50}px, 5px)`
+                    'webkitTransform': `translate3d(${(mousePos.x - bannerX)/70}px, ${(mousePos.y - bannerY)/70}px, 5pxpx)`,
+                    'transform': `translate3d(${(mousePos.x - bannerX)/70}px, ${(mousePos.y - bannerY)/70}px, 5px)`
                 })
             }
         });

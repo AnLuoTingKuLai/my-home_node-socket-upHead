@@ -1,0 +1,81 @@
+.textFont {
+  width: 300px;
+  margin: auto;
+  font-size: 12px;
+  text-align: center;
+  animation: deviation 1.5s forwards; }
+  .textFont .text .name,
+  .textFont .text .name2 {
+    font-size: 7px;
+    position: relative; }
+    .textFont .text .name .textAnimation,
+    .textFont .text .name2 .textAnimation {
+      margin: 0 -2.6px 0 0;
+      opacity: 0; }
+  .textFont .text .name .textAnimation:nth-child(1) {
+    animation: textAnimation 1s forwards; }
+  .textFont .text .name .textAnimation:nth-child(2) {
+    animation: textAnimation 1s forwards; }
+  .textFont .text .name .textAnimation:nth-child(3) {
+    animation: textAnimation 1s forwards; }
+  .textFont .text .name .textAnimation:nth-child(4) {
+    animation: textAnimation 1s forwards; }
+  .textFont .text .name .textAnimation:nth-child(5) {
+    animation: textAnimation 1s forwards; }
+  .textFont .text .name2 {
+    top: 2px; }
+    .textFont .text .name2 .textAnimation:nth-child(1) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(2) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(3) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(4) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(5) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(6) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(7) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(8) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(9) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(10) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(11) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(12) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(13) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(14) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(15) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(16) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(17) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(18) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(19) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(20) {
+      animation: textAnimation 1s forwards; }
+    .textFont .text .name2 .textAnimation:nth-child(21) {
+      animation: textAnimation 1s forwards; }
+@keyframes textAnimation {
+  0% {
+    font-size: 30px; }
+  100% {
+    opacity: 1;
+    font-size: 12px; } }
+@keyframes deviation {
+  0% {
+    margin-top: 0; }
+  100% {
+    margin-top: 25px; } }
+
+/*# sourceMappingURL=textAnimation.css.map */
