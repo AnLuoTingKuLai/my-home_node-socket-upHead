@@ -15,7 +15,7 @@
 	<div class="wrap">
 		<!-- //头部 -->
 		<header>
-			<div class="head-nav">
+			<div class="head-nav small">
 				<div>
 					<nav class="navbar m-0">
 						<div class="container-fluid">
@@ -25,12 +25,10 @@
 									<img  src="../images/1.jpg">
 								</a> -->
 							</div>
-							<ul id="navbar" class="nav navbar-nav f-r">
-								<li class="active" data-target="banner">主页</li>
-								<li data-target="brief">个人简介</li>
-								<li data-target="works">作品展示</li>
-								<li data-target="footer">联系方式</li>
-							</ul>
+							<div id="navbar" class="nav navbar-nav f-r">
+								<li class="active" data-target="banner"><a href="../index">主页</a></li>
+								<li data-target="footer"><a href="jacascript:;">联系方式</a></li>
+							</div>
 						</div>
 					</nav>
 				</div>
@@ -39,24 +37,78 @@
 		<!-- 内容 -->
 		<div class="container">
 			<div class="grid">
-				<div class="grid-item box-animation">
-					divasdasdas
-				</div>
-				<div class="grid-item box-animation">
-					divasdasdas
-				</div>
-				<div class="grid-item box-animation">
-					asdsad
-				</div>
-				<div class="grid-item box-animation">
-					divasdasdas
-				</div>
-				<div class="grid-item box-animation">
-					divasdasdas
-				</div>
-				<div class="grid-item box-animation">
-					divasdasdas
-				</div>
+				<a href="../photo">
+					<div class="grid-item box-animation">
+						<!-- //展示的内容 -->
+						<div class="box-an-content">
+							<img src="../images/banner.png" alt="">
+						</div>
+						<!-- //hover的时候的内容 -->
+						<div class="box-an-mask">
+							使用animation 实现照片墙效果
+						</div>
+					</div>
+				</a>
+				<a href="javascript:;">
+					<div class="grid-item box-animation">
+						<!-- //展示的内容 -->
+						<div class="box-an-content">
+							<img src="../images/banner3.jpg" alt="">
+						</div>
+						<!-- //hover的时候的内容 -->
+						<div class="box-an-mask">
+							localStorage 和 sessionStorage 的对比
+						</div>
+					</div>
+				</a>
+				<a href="javascript:;">
+					<div class="grid-item box-animation">
+						<!-- //展示的内容 -->
+						<div class="box-an-content">
+							<img src="../images/banner4.jpg" alt="">
+						</div>
+						<!-- //hover的时候的内容 -->
+						<div class="box-an-mask">
+							indexDB的基础使用
+						</div>
+					</div>
+				</a>
+				<a href="javascript:;">
+					<div class="grid-item box-animation">
+						<!-- //展示的内容 -->
+						<div class="box-an-content">
+							<img src="../images/banner2.jpg" alt="">
+						</div>
+						<!-- //hover的时候的内容 -->
+						<div class="box-an-mask">
+							待定
+						</div>
+					</div>
+				</a>
+				<a href="javascript:;">
+					<div class="grid-item box-animation">
+						<!-- //展示的内容 -->
+						<div class="box-an-content">
+							<img src="../images/10.jpg" alt="">
+						</div>
+						<!-- //hover的时候的内容 -->
+						<div class="box-an-mask">
+							待定
+						</div>
+					</div>
+				</a>
+				<a href="javascript:;">
+					<div class="grid-item box-animation">
+						<!-- //展示的内容 -->
+						<div class="box-an-content">
+							待定
+						</div>
+						<!-- //hover的时候的内容 -->
+						<div class="box-an-mask">
+							待定
+						</div>
+					</div>
+				</a>
 			</div>
 		</div>
 		<!-- //尾部 -->
@@ -97,5 +149,5 @@
 <script src="../plugins/jquery-2.1.0.js"></script>
 <script src="../dep/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 <script src="../js/common.js"></script>
-<script src="../js/index.js"></script>
+<script src="../js/disaplayList.js"></script>
 </html>
