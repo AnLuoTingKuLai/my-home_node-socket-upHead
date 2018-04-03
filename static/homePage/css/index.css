@@ -5,9 +5,17 @@
 @font-face {
   font-family: ttf04b08;
   src: url("../font/04b08.ttf"); }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
 body {
   font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
-  background: #000; }
+  background: #000;
+  width: 100%;
+  height: 100%; }
 
 .wrap {
   width: 100%;
