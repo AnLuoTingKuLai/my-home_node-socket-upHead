@@ -1,0 +1,45 @@
+@charset "UTF-8";
+//基本颜色
+$colors: (
+        'none': none,
+        'no': none,
+        'mouse-in':#ECF4FC,
+        'main-blue': rgb(59, 85, 110),
+        'white': #fff,
+        'grey': rgba(83, 100, 109, .6),
+        'teal': #00BA9E,
+        'dark': #666,
+        'red': #ed3f14,
+        'orange': #ff9900,
+        'yellow': #FBBD08,
+        'olive': #B5CC18,
+        'green': #21BA45,
+        'blue': #2185D0,
+        'violet': #6435C9,
+        'purple': #A333C8,
+        'pink': #E03997,
+        'gray': #a0a0a0,
+        'black': #000,
+        'lightgrey': #83939a,
+        'ccc': #ccc,
+        '999': #999,
+        'f2': #f2f2f2,
+        'defInput': #495060
+);
+//微调margin间距
+//-----------------------------------
+$directions: (
+        'whole': '', //全方位
+        't': 'top',
+        'r': 'right',
+        'b': 'bottom',
+        'l': 'left',
+        'tb': 'tb',
+        'lr': 'lr'
+);
+
+$pms: (
+        'm': 'margin',
+        'p': 'padding'
+);
+

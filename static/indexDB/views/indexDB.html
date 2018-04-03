@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="../plugins/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="../plugins/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+	<script src="../plugins/jquery-2.1.0.js"></script>
+	<link rel="stylesheet" href="../css/indexDB.css">	<script>
+		// （1）Indexed DB：
+		// 索引数据库，操作简便，目前主流浏览器正努力实现对index DB的支持。
+		// Web SQL Database实际上已经被废弃，而HTML5的支持的本地存储实际上变成了Web Storage（Local Storage和Session Storage）与IndexedDB。Web Storage使用简单字符串键值对在本地存储数据，方便灵活，但是对于大量结构化数据存储力不从心，IndexedDB是为了能够在客户端存储大量的结构化数据，并且使用索引高效检索的API。
+		// （2）indexDB主要对象介绍：
+		// •    IDBFactory：打开数据库的工厂对象，用于打开数据库，并管理数据库版本。
+		// •    IDBOpenDBRequest：请求对象，对数据库的访问、操作都是基于请求的，通过请求对象获取其他DOM对象。
+		// •    IDBDatabase：数据库对象，封装了对数据库表的创建、编辑等功能。
+		// •    IDBObjectStore：类似于数据库的数据表。
+		// •    IDBIndex：数据库索引对象，用于创建数据表的索引。
+		// •    IDBTransaction：数据库事物控制对象。
+		// •    IDBCursor：数据库访问游标，用于访问数据。
+		// （3）异步API
+		// 在IndexedDB大部分操作并不是我们常用的调用方法，返回结果的模式，而是请求——响应的模式，比如打开数据库的操作
+		// var request=window.indexedDB.open('testDB');
+		// 这条指令并不会返回一个DB对象的句柄，我们得到的是一个IDBOpenDBRequest对象，而我们希望得到的DB对象在其result属性中，
+		// 这条指令请求的响应是一个 IDBDatabase对象，这就是IndexedDB对象，
+		// 除了result，IDBOpenDBRequest接口定义了几个重要属性
+		// •    onerror: 请求失败的回调函数句柄
+		// •    onsuccess:请求成功的回调函数句柄
+		// •    onupgradeneeded:请求数据库版本变化句柄
+		// 所谓异步API是指并不是这条指令执行完毕，我们就可以使用request.result来获取indexedDB对象了，就像使用ajax一样，语句执行完并不代表已经获取到了对象，所以我们一般在其回调函数中处理。
+	</script>
+</head>
+
+<body>
+	<div class="row p-20">
+		<div class="col-sm-6">
+			<form class="form-horizontal">
+				<div class="row m-b-10">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">用户名</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="username" placeholder="用户名"> </div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">密码</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="password" placeholder="密码"> </div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">昵称</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="nickname" placeholder="昵称"> </div>
+					</div>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4 m-b-12" onClick="openDB({version: 2})">创建或打开</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="addData()">添加用户</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="clearAll()">清空</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="deleteDB()">删除数据库</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="updateDataByKey()">修改数据库</button>
+				</div>
+				<div class="row">
+					<div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">key</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="checkKey" placeholder="请输入查询的搜索的内容值"> </div>
+						</div>
+					</div>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="fetchAllEmployees()">游标迭代</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4 m-b-12" onClick="getDataByKey({})">使用唯一标识符主键查找</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="userNameCheck()">使用用户名(索引值)查找</button>
+					<hr/>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="fetchNewYorkEmployees({type: 1})">使用昵称查找指定值</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="fetchNewYorkEmployees({type: 2})">使用昵称查找大于值</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="fetchNewYorkEmployees({type: 3})">使用昵称查找小于值</button>
+					<button type="button" class="btn btn-default col-md-offset-2 col-sm-4  m-b-12" onClick="fetchNewYorkEmployees({type: 4})">xxx到9999的值</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<div>查询信息： <span id="getDataMsg"></span> </div>
+			<div> 全部用户列表
+				<p id="getAllDataList"></p>
+			</div>
+		</div>
+	</div>
+	<script src="../js/indexDB.js"></script>
+</body>
+
+</html>
