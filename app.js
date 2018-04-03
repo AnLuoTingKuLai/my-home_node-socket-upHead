@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 app.use(cookieParser());
 //设置静态文件目录
 app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, 'static/base'))); // 公用的基础文件
 app.use(express.static(path.join(__dirname, 'static/homePage'))); //主页
 app.use(express.static(path.join(__dirname, 'static/photo'))); //图片特效
 app.use(express.static(path.join(__dirname, 'static/login'))); //登录

@@ -28,20 +28,21 @@ userName | fileUrl | fileName | filePath | filter| upDate
 # 项目布局
 ```
 |-- bin 							
-|    |-- www 						//项目启动文件
+|	|-- www 						//项目启动文件
 |-- config							//存放配置文件的夹
-|    |-- db.js 						//配置项目数据库
-|    |-- server.js				//配置端口号
+|	|-- db.js 						//配置项目数据库
+|	|-- server.js					//配置端口号
 |-- doc								//说明文档
 |-- routes							//路由用响应
 |-- static							//静态文件目录
-|    |-- css						//编译后的css文件
-|    |-- sass						//sass文件
-|    |-- font						//font字体文件夹
-|    |-- images						//图片文件
-|    |-- js							//js文件
-|    |-- plugins					//插件
-|    |-- views						//静态html文件
+|	|-- base						//基础的公用文件
+|	|	|-- css						//编译后的css文件
+|	|	|-- sass					//sass文件
+|	|	|-- font					//font字体文件夹
+|	|	|-- images					//图片文件
+|	|	|-- js						//js文件
+|	|	|-- plugins					//插件
+|	|	|-- views					//静态html文件
 |-- views  							//视图（默认 404 500等页面）
 |-- app.js  						//服务器配置
 |-- package.json					// 项目及工具的依赖配置文件

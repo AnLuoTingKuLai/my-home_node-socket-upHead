@@ -1,0 +1,341 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 30px;
+  border: 0;
+  background-color: #E9E9E9;
+  box-sizing: border-box; }
+  body:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../images/bg-spinning.png);
+    z-index: -1;
+    opacity: 1; }
+
+.m-t-20 {
+  margin-top: 20px; }
+
+.m-b-20 {
+  margin-bottom: 20px; }
+
+.fl,
+.f-l {
+  float: left !important; }
+
+.fr,
+.f-r {
+  float: right !important; }
+
+.clear {
+  clear: both !important; }
+
+.clearfix:after {
+  content: ".";
+  /*内容为“.”就是一个英文的句号而已。也可以不写。*/
+  display: block;
+  /*加入的这个元素转换为块级元素。*/
+  clear: both;
+  /*清除左右两边浮动。*/
+  visibility: hidden;
+  /*可见度设为隐藏。注意它和display:none;是有区别的。visibility:hidden;仍然占据空间，只是看不到而已；*/
+  line-height: 0;
+  /*行高为0；*/
+  height: 0;
+  /*高度为0；*/
+  font-size: 0;
+  /*字体大小为0；*/ }
+
+.clearfix {
+  /*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
+  *zoom: 1; }
+
+.b-g-black,
+.bg-black {
+  background-color: #000 !important; }
+
+.gridWrap {
+  display: grid;
+  /*//calc 计算属性*/
+  grid-template: 100vh 100vh/calc(100vw - 100px); }
+
+/*================================
+				//下面是照片效果
+		=================================*/
+.container {
+  position: relative;
+  margin-top: 50px;
+  text-align: center; }
+
+.photo {
+  display: inline-block;
+  width: 295px;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #BFBFBF;
+  background-color: #fff;
+  /* Add box-shadow */
+  box-shadow: 2px 2px 3px #aaaaaa; }
+
+.photo > img {
+  max-width: 100%;
+  max-height: 300px; }
+
+/*入场效果*/
+.im1,
+.im2,
+.im3 {
+  position: relative;
+  opacity: 0;
+  cursor: pointer; }
+
+.im1 {
+  animation: aScale .6s 1.1s forwards; }
+
+.im2 {
+  z-index: 3;
+  animation: aScale2 .6s .5s forwards; }
+
+.im3 {
+  animation: aScale .6s 1.7s forwards; }
+
+/*动画效果*/
+.container .im1 {
+  transform: scale(1, 1);
+  transform: rotate(7deg);
+  animation: aScale .6s 1.1s forwards, pictureSet .3s 10.8s linear forwards, angle .9s 10s linear forwards; }
+
+.container .im3 {
+  z-index: 2;
+  transform: scale(1, 1);
+  transform: rotate(7deg);
+  animation: aScale .6s 1.7s forwards, pictureSetTwo .6s 10.8s linear forwards, angleTwo .9s 10s forwards; }
+
+.container .im2 {
+  transform: scale(1, 1);
+  transform: rotate(-8deg);
+  /*停止动画*/
+  animation: aScale2 .6s .5s forwards; }
+
+/*================================
+				//动画效果
+		=================================*/
+/*//位移*/
+@keyframes pictureSet {
+  0% {
+    top: 0;
+    left: 0;
+    right: 0; }
+  100% {
+    top: 6px;
+    right: -317px; } }
+@keyframes pictureSetTwo {
+  0% {
+    top: 0;
+    left: 0;
+    right: 0; }
+  100% {
+    top: 6px;
+    left: -317px; } }
+/*//旋转角度变化*/
+@keyframes angle {
+  0% {
+    transform: rotate(7deg); }
+  100% {
+    transform: rotate(-8deg); } }
+@keyframes angleTwo {
+  0% {
+    transform: rotate(8deg); }
+  100% {
+    transform: rotate(3deg); } }
+/*入场*/
+@keyframes aScale {
+  0% {
+    opacity: 0;
+    transform: scale(1.5, 1.5); }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+    transform: rotate(7deg); } }
+@keyframes aScale2 {
+  0% {
+    opacity: 0;
+    transform: scale(1.5, 1.5); }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+    transform: rotate(-8deg); } }
+/*================================
+				//下面是关闭按钮
+		=================================*/
+.menu-outer {
+  position: relative;
+  display: inline-block;
+  transform: scale(0, 0);
+  margin: 5px;
+  cursor: pointer; }
+
+.container .menu-outer {
+  /*transform: scale(1, 1);*/
+  /*transition: transform 1s .5s; */
+  animation: iconScale .6s 12s forwards; }
+
+@keyframes iconScale {
+  100% {
+    transform: scale(1, 1); } }
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  padding: 8px 0;
+  transform: translate(-50%, -50%);
+  background-clip: content-box;
+  background-color: #585247; }
+
+.menu::after,
+.menu::before {
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #585247;
+  /*//过渡效果 透明度 .3秒  背景色.3秒*/
+  transition: transform .3s, background-color .3s; }
+
+.menu::before {
+  top: 0; }
+
+.menu::after {
+  bottom: 0; }
+
+/*//动画效果*/
+.menu-outer:hover .menu {
+  /*//背景透明*/
+  background-color: transparent; }
+
+.menu-outer:hover .menu::before {
+  transform: translateY(8px) rotate(45deg); }
+
+.menu-outer:hover .menu::after {
+  transform: translateY(-8px) rotate(-45deg); }
+
+/*================================
+				//下面是照片墙效果
+		=================================*/
+.container1 {
+  position: relative;
+  width: 960px;
+  height: 450px;
+  margin: 60px auto;
+  position: relative; }
+
+.container1 img {
+  position: absolute;
+  /*//限制最大最小 图片不变形*/
+  max-width: 300px;
+  max-height: 300px;
+  /*padding 顺序上右下左*/
+  padding: 10px 10px 15px;
+  border: 1px solid #ddd;
+  background: #fff;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  /*//过渡*/
+  transition: .5s;
+  z-index: 1; }
+
+.container1 img:hover {
+  /*//图片旋转置空*/
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+  /*//放大1.1*/
+  -webkit-transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  transform: scale(1.3);
+  /*//阴影*/
+  -webkit-box-shadow: 2px 2px 2px #ddd;
+  -moz-box-shadow: 2px 2px 2px #ddd;
+  box-shadow: 2px 2px 2px #ddd;
+  /*//图层显示优先级*/
+  z-index: 2;
+  /*//手势*/
+  cursor: pointer; }
+
+.pic1 {
+  top: 0px;
+  left: 400px;
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  transform: rotate(-5deg); }
+
+.pic2 {
+  top: 0px;
+  left: 600px;
+  -webkit-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+  transform: rotate(-20deg); }
+
+.pic3 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  transform: rotate(5deg); }
+
+.pic4 {
+  bottom: 0;
+  left: 300px;
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  transform: rotate(-10deg); }
+
+.pic5 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  transform: rotate(-10deg); }
+
+.pic6 {
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  transform: rotate(10deg); }
+
+.pic7 {
+  top: 0;
+  left: 850px;
+  -webkit-transform: rotate(20deg);
+  -moz-transform: rotate(20deg);
+  transform: rotate(20deg); }
+
+.pic8 {
+  bottom: -20px;
+  right: 630px;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  transform: rotate(5deg); }
+
+.pic9 {
+  top: 90px;
+  left: 550px;
+  -webkit-transform: rotate(15deg);
+  -moz-transform: rotate(15deg);
+  transform: rotate(15deg); }
+
+.pic10 {
+  left: 180px;
+  top: 20px;
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  transform: rotate(-10deg); }
+
+/*# sourceMappingURL=photo.css.map */
