@@ -12,7 +12,8 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.redirect('/index');
+    // res.redirect('/index');
+    res.sendFile(path.join(__dirname, '../static/homePage/views/index.html'));
 });
 
 /* login接口的时候 */
