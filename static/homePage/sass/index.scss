@@ -1,9 +1,5 @@
 @charset "UTF-8";
 @font-face {
-	font-family: lxk;
-	src: url('../font/lxk.ttf')
-}
-@font-face {
 	font-family: ttf04b08;
 	src: url('../font/04b08.ttf')
 }
@@ -133,29 +129,13 @@ header {
 	}
 	.banner-caption {
 		position: absolute;
-		top: 50%;
-		margin-top: -90px;
-		width: 100%;
-		color: #fff;
-		transition: all .1s linear;
-		.text-center {
-			font-size: 80px;
-			text-shadow: 0.1em 0.1em 0.05em rgba(0, 0, 0, .3);
-			&.font {
-				font-family: lxk;
-			}
-			span {
-				position: relative;
-				top: 25px;
-				font-size: 120px;
-			}
-			&.remarks {
-				position: relative;
-				top: -20px;
-				left: -65px; // display: inline-block;
-				font-size: 12px;
-			}
-		}
+		display: block;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		padding-top: 50px;
 	}
 }
 

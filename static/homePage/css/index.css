@@ -1,8 +1,5 @@
 @charset "UTF-8";
 @font-face {
-  font-family: lxk;
-  src: url("../font/lxk.ttf"); }
-@font-face {
   font-family: ttf04b08;
   src: url("../font/04b08.ttf"); }
 html, body {
@@ -97,25 +94,13 @@ header .head-nav {
     z-index: 0; }
   .banner .banner-caption {
     position: absolute;
-    top: 50%;
-    margin-top: -90px;
-    width: 100%;
-    color: #fff;
-    transition: all .1s linear; }
-    .banner .banner-caption .text-center {
-      font-size: 80px;
-      text-shadow: 0.1em 0.1em 0.05em rgba(0, 0, 0, 0.3); }
-      .banner .banner-caption .text-center.font {
-        font-family: lxk; }
-      .banner .banner-caption .text-center span {
-        position: relative;
-        top: 25px;
-        font-size: 120px; }
-      .banner .banner-caption .text-center.remarks {
-        position: relative;
-        top: -20px;
-        left: -65px;
-        font-size: 12px; }
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding-top: 50px; }
 
 .brief {
   position: relative;

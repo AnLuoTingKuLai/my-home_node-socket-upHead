@@ -124,8 +124,8 @@ $(function () {
                 })
                 //文字
                 $caption.css({
-                    'webkitTransform': `translate3d(${(mousePos.x - bannerX)/70}px, ${(mousePos.y - bannerY)/70}px, 5pxpx)`,
-                    'transform': `translate3d(${(mousePos.x - bannerX)/70}px, ${(mousePos.y - bannerY)/70}px, 5px)`
+                    'webkitTransform': `translate3d(${(mousePos.x - bannerX)/200}px, ${(mousePos.y - bannerY)/200}px, 5pxpx)`,
+                    'transform': `translate3d(${(mousePos.x - bannerX)/200}px, ${(mousePos.y - bannerY)/200}px, 5px)`
                 })
             }
         });
