@@ -67,7 +67,7 @@ module.exports = {
                 //文件插入
                 var fileName = 'head.jpg'; //文件名
                 var fileUrl = `/images/userData/${timeStamp}/`; //文件相对路径
-                var filePath = path.join(__dirname, `../static/images/userData/${timeStamp}/`); //文件绝对路径
+                var filePath = path.join(__dirname, `../static/socket/images/userData/${timeStamp}/`); //文件绝对路径
                 console.log('filePath1', filePath);
                 //创建文件夹
                 fs.mkdir(filePath,function(err){  
