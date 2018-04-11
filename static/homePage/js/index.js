@@ -1,4 +1,6 @@
 
+//加载footer内容
+$('#footerWrap').load('../tpl/footer.tpl');
 //存储方法
 class IndexObj {
     //点击菜单栏的时候滚动
@@ -70,7 +72,7 @@ class IndexObj {
         };
     };
 }
-
+//加载完成后
 $(function () {
     let indexObj = new IndexObj();
     let bannerX = null;
