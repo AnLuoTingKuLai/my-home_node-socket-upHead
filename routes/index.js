@@ -48,7 +48,7 @@ router.route('/socket')
 //获取用户信息
 router.route('/getUserInfo')
 .post(function (req, res, next) {
-	var sqlstring = `Select * From userData WHERE userName='${req.body.userName}'`;
+	var sqlstring = `Select * From user_data WHERE userName='${req.body.userName}'`;
 	connection.query(sqlstring, (err, result) => {
 		if (err) {
             console.log('[查询失败] - ', err);
