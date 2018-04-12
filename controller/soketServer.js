@@ -77,7 +77,7 @@ io.on('connection', function (socket) {
             }
 
             //获取在线用户列表
-            var sqlstring = `SELECT u.userName,u.password,u.state,ua.fileName,ua.fileUrl,ua.filePath,ua.filter from USER AS u left JOIN user_data AS ua on u.userName = ua.userName WHERE u.state = '1'`;
+            var sqlstring = `SELECT u.userName,u.password,u.state,ua.fileName,ua.fileUrl,ua.filePath,ua.filter from user as u left JOIN user_data AS ua on u.userName = ua.userName WHERE u.state = '1'`;
             connection.query(sqlstring, function (err, result) {
                 // var userList = [];
                 console.log('返回的数据:', result);
