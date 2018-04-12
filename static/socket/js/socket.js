@@ -52,7 +52,7 @@ $(function () {
             }
         })
     //生成 soket实例
-    var socket = io.connect("ws://39.107.236.45:8099");
+    var socket = io.connect("ws://120.27.212.237");
     //通知服务器有用户登录
     if (userInfo && userInfo.userName) {
         socket.emit('login', userInfo);
