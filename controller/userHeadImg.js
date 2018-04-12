@@ -10,7 +10,7 @@ connection.connect();
 module.exports = {
     getImg(req, res, next) {
         // 查询数据  
-        var sqlstring = `Select * From userData WHERE userName='${req.body.userName}' && fileUrl != ''`;
+        var sqlstring = `Select * From user_data WHERE userName='${req.body.userName}' && fileUrl != ''`;
         connection.query(sqlstring, function (err, result) {
             if (err) {
                 console.log('[查询失败] - ', err);
@@ -53,7 +53,7 @@ module.exports = {
         console.log('dataBuffer: ', dataBuffer)
 
         //查询用户
-        let sqlstring = `Select userName, filePath From userdata WHERE userName='${req.body.userName}'`;
+        let sqlstring = `Select userName, filePath From user_data WHERE userName='${req.body.userName}'`;
         connection.query(sqlstring, function (err, result) {
             if(err){
                 console.log('[SELECT ERROR] - ', err.message);
@@ -84,8 +84,8 @@ module.exports = {
                         //路径转换
                         fileUrl = fileUrl.replace(/\\/g,"/");
                         filePath = filePath.replace(/\\/g,"/");
-                        let sqlstring = `INSERT INTO userdata  (userName, filePath, fileUrl, fileName) VALUES ( '${req.body.userName}', '${filePath}', '${fileUrl}', '${fileName}' )`;
-                        // let sqlstring = `Update userdata Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
+                        let sqlstring = `INSERT INTO user_data  (userName, filePath, fileUrl, fileName) VALUES ( '${req.body.userName}', '${filePath}', '${fileUrl}', '${fileName}' )`;
+                        // let sqlstring = `Update user_data Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
                         console.log('创建文件成功')
                         console.log('fileUrl:', fileUrl);
                         console.log('filePath:', filePath);
@@ -102,7 +102,7 @@ module.exports = {
                 })
             } else {
                 // 如果存在数据的话那么就更新
-                let sqlstring = `Select userName, filePath From userdata WHERE userName='${req.body.userName}' && filePath != ''`;
+                let sqlstring = `Select userName, filePath From user_data WHERE userName='${req.body.userName}' && filePath != ''`;
                 connection.query(sqlstring, function (err, result) {
                     if(err){
                         console.log('[SELECT ERROR] - ', err.message);
@@ -132,7 +132,7 @@ module.exports = {
                                 //路径转换
                                 fileUrl = fileUrl.replace(/\\/g,"/");
                                 filePath = filePath.replace(/\\/g,"/");
-                                let sqlstring = `Update userdata Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
+                                let sqlstring = `Update user_data Set filePath = '${filePath}/', fileUrl = '${fileUrl}', fileName = '${fileName}' Where userName='${req.body.userName}'`;
                                 console.log('创建文件成功')
                                 console.log('fileUrl:', fileUrl);
                                 console.log('filePath:', filePath);
@@ -149,7 +149,7 @@ module.exports = {
                         });  
                        
                     } else {
-                        let sqlstring = `Select filePath From userdata WHERE userName='${req.body.userName}'`;
+                        let sqlstring = `Select filePath From user_data WHERE userName='${req.body.userName}'`;
                         connection.query(sqlstring, function (err, result) {
                             if(err){
                                 console.log('[查询失败] - ', err.message);
@@ -172,7 +172,7 @@ module.exports = {
         });
     },
     setFilter(req, res, next) {
-        sqlstring = `Update userdata Set filter = '${req.body.filter}' Where userName='${req.body.userName}'`;
+        sqlstring = `Update user_data Set filter = '${req.body.filter}' Where userName='${req.body.userName}'`;
         connection.query(sqlstring, function (err, result) {
             if(err){
                 console.log('[UPDATE ERROR] - ', err.message);
