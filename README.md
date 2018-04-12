@@ -4,6 +4,7 @@
 ```
 $ git clone
 $ npm install
+$ npm install -g supervisor //监听项目
 $ npm start (必创建数据库 否则会出错)
 
 ```
@@ -16,7 +17,7 @@ userName| password| state
 :-: | :-: | :-:
 用户名(主键) | 密码 | 登录状态
 
-userdata表：
+user_data表：
 
 userName | fileUrl | fileName | filePath | filter| upDate
 :-: | :-: | :-: | :-: | :-: | :-:
