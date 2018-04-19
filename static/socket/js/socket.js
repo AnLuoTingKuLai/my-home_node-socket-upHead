@@ -59,7 +59,7 @@ $(function () {
     } else {
         alert('请先登录');
         setTimeout(() => {
-            window.location.href = "../login/login.html"
+            window.location.href = "../login"
         }, 2000)
     }
     //监听新用户登录
@@ -118,15 +118,15 @@ $(function () {
     /*监听函数*/
     function updateMsg(o, action) {
         //离线数
-        var onOffLineCount = o.onOffLineCount;
+        let onOffLineCount = o.onOffLineCount;
         //当前在线数
-        var onlineCount = o.onlineCount;
+        let onlineCount = o.onlineCount;
         //新加用户
-        var userName = o.userName;
+        let userName = o.userName;
         //更新在线人数
-        var userList = o.onlineUsers;
+        let userList = o.onlineUsers;
         //生成用户列表
-        var userListHtml = '';
+        let userListHtml = '';
         for (user of userList) {
             //获取滤镜
             let filter = user.filter ? `filter filter-${user.filter}` : '';
@@ -136,7 +136,18 @@ $(function () {
             }
 
             userListHtml += `
-                <img data-own-head="${flageOwn}" class="img-o-head ${filter}" src="${user.fileUrl}${user.fileName}" alt="$(userName)">
+                <div class="img-o-head-wrap">
+                    <img data-own-head="${flageOwn}" class="img-o-head ${filter}" src="${user.fileUrl}${user.fileName}" alt="$(userName)">
+                    <div class="h-user-info">
+                        <div class="h-user-info-content">
+                            <img class="${user.sex == 1 ? '' : 'girl'} h-head img-o-head" src="${user.fileUrl}${user.fileName}" alt="$(userName)" />
+                            <div class="t-c f-w2 f-16 m-b-5">${user.userName}</div>
+                            <div class="t-c c-gray f-14 m-b-10">${user.nickName ? user.nickName : ''}</div>
+                            <p class="f-14">${user.brief ? user.brief : '暂无简介'}</p>
+                            <div class="${user.sex == 1 ? '' : 'girl'} social"></div>
+                        </div>
+                    </div>
+                </div>
             `
         }
         //在线数量
