@@ -109,7 +109,7 @@ header {
 		background: url(../images/banner.jpg) no-repeat 10% 10%;
 		background-size: cover;
 		z-index: 3;
-		animation: kenburns-1 60s 6s linear infinite;
+		animation: kenburns-1 20s 6s linear infinite;
 
 	}
 	.banner-image-2 {
@@ -144,7 +144,7 @@ header {
 .brief {
 	position: relative;
 	width: 100%;
-	height: 140%;
+	height: 130%;
 	background: url(../images/bg-black2.jpg) no-repeat center bottom fixed;
 	background-size: cover;
 	color: #fff;
@@ -172,7 +172,7 @@ header {
 		box-shadow: 0 0 10px #000;
 		box-sizing: border-box;
 		font-size: 0;
-		.brief-img,
+		.brief-msg,
 		.brief-text {
 			display: inline-block;
 			height: 100%;
@@ -180,17 +180,50 @@ header {
 			font-size: 12px;
 		}
 		// 图片
-		.brief-img {
-			width: 40%;
+		.brief-msg {
+			width: 30%;
 			border: 1px solid rgba(255, 255, 255, .8);
-			border-right: 0;
+			border-right:  solid rgba(0, 0, 0, .4);
+			padding: 15px;
+			.head-img {
+				display: block;
+				width: 150px;
+				height: 150px;
+				margin: auto;
+				border: 3px solid rgba(255, 255, 255, 1);
+				margin-bottom: 15px;
+				border-radius: 50%;
+				overflow: hidden;
+				box-shadow: 0 0 10px #00a67c;
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.brief-base-msg {
+				text-align: center;
+				.text {
+					display: inline-block;
+					padding: 2px 5px;
+					// border: 1px solid #999;
+					color: #999;
+					font-size: 12px;
+					text-transform: capitalize;
+					cursor: pointer;
+					&:hover {
+						color: #0aac8e;
+					    text-decoration: none;
+					    transition-duration: 0.3s;
+					}
+				}
+			}
 		}
 		// 文字信息
 		.brief-text {
-			width: 60%;
+			width: 70%;
 			border: 1px solid rgba(255, 255, 255, .8);
 			border-left: 0;
-			padding: 15px;
+			padding: 15px 5%;
 			//进度条
 			.skill-bars {
 				padding: 0;
@@ -426,7 +459,7 @@ header {
 			width: 90%;
 			height: auto;
 			margin: auto;
-			.brief-img {
+			.brief-msg {
 				display: none;
 			}
 			.brief-text {

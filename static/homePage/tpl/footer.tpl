@@ -8,7 +8,8 @@
 			</div>
 			<div class="col-md-4">
 				<div class="m-b-2">website</div>
-				<div class="m-b-8"><a href="https://www.shengc.top:8099" target="_blank">https://www.shengc.top</a></div>
+				<div class="m-b-8"><a href="http://www.mhyyz.com" target="_blank">https://www.mhyyz.com</a></div>
+				<div class="m-b-8"><a href="http://www.shengc.top" target="_blank">https://www.shengc.top</a></div>
 
 				<div class="m-b-2">github</div>
 				<div class="m-b-8"><a href="https://github.com/AnLuoTingKuLai" target="_blank">https://github.com/AnLuoTingKuLai</a></div>

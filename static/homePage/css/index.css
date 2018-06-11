@@ -79,7 +79,7 @@ header .head-nav {
     background: url(../images/banner.jpg) no-repeat 10% 10%;
     background-size: cover;
     z-index: 3;
-    animation: kenburns-1 60s 6s linear infinite; }
+    animation: kenburns-1 20s 6s linear infinite; }
   .banner .banner-image-2 {
     background-image: url(../images/banner2.jpg);
     animation-name: kenburns-2;
@@ -106,7 +106,7 @@ header .head-nav {
 .brief {
   position: relative;
   width: 100%;
-  height: 140%;
+  height: 130%;
   background: url(../images/bg-black2.jpg) no-repeat center bottom fixed;
   background-size: cover;
   color: #fff; }
@@ -133,21 +133,48 @@ header .head-nav {
     box-shadow: 0 0 10px #000;
     box-sizing: border-box;
     font-size: 0; }
-    .brief .brief-content .brief-img,
+    .brief .brief-content .brief-msg,
     .brief .brief-content .brief-text {
       display: inline-block;
       height: 100%;
       overflow: hidden;
       font-size: 12px; }
-    .brief .brief-content .brief-img {
-      width: 40%;
+    .brief .brief-content .brief-msg {
+      width: 30%;
       border: 1px solid rgba(255, 255, 255, 0.8);
-      border-right: 0; }
+      border-right: solid rgba(0, 0, 0, 0.4);
+      padding: 15px; }
+      .brief .brief-content .brief-msg .head-img {
+        display: block;
+        width: 150px;
+        height: 150px;
+        margin: auto;
+        border: 3px solid white;
+        margin-bottom: 15px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 10px #00a67c; }
+        .brief .brief-content .brief-msg .head-img img {
+          width: 100%;
+          height: 100%; }
+      .brief .brief-content .brief-msg .brief-base-msg {
+        text-align: center; }
+        .brief .brief-content .brief-msg .brief-base-msg .text {
+          display: inline-block;
+          padding: 2px 5px;
+          color: #999;
+          font-size: 12px;
+          text-transform: capitalize;
+          cursor: pointer; }
+          .brief .brief-content .brief-msg .brief-base-msg .text:hover {
+            color: #0aac8e;
+            text-decoration: none;
+            transition-duration: 0.3s; }
     .brief .brief-content .brief-text {
-      width: 60%;
+      width: 70%;
       border: 1px solid rgba(255, 255, 255, 0.8);
       border-left: 0;
-      padding: 15px; }
+      padding: 15px 5%; }
       .brief .brief-content .brief-text .skill-bars {
         padding: 0;
         margin: 0;
@@ -319,7 +346,7 @@ header .head-nav {
       width: 90%;
       height: auto;
       margin: auto; }
-      .brief .brief-content .brief-img {
+      .brief .brief-content .brief-msg {
         display: none; }
       .brief .brief-content .brief-text {
         display: block;

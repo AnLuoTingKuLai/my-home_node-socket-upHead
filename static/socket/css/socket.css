@@ -110,6 +110,8 @@ body {
       padding: 10px;
       font-size: 12px;
       color: #666; }
+    .main .main-body .chat-wrap {
+      padding: 10px; }
     .main .main-body .user-list-wrap {
       margin-top: 5px;
       padding-left: 60px; }

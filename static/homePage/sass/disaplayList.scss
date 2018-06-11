@@ -82,6 +82,9 @@
 			.box-an-mask {
 				opacity: 1
 			}
+			.box-an-title {
+				visibility: hidden;
+			}
 		}
 		//遮罩层
 		.box-an-content,
@@ -102,7 +105,15 @@
 				max-height: 100%;
 			}
 		}
+		.box-an-title {
+			margin-left: 15px;
+			margin-right: 15px;
+			overflow: hidden;//溢出时隐藏
+			white-space: nowrap; //文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。
+			text-overflow: ellipsis; //文本溢出使用省略号
+		}
 		.box-an-content {
+			top: 20%;
 			&:before {
 				content: "";
 				height: 100%;
