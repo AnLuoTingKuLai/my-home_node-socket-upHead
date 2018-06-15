@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'static/login'))); //登录
 app.use(express.static(path.join(__dirname, 'static/socket'))); //socket
 app.use(express.static(path.join(__dirname, 'static/localStorage'))); //localStorage
 app.use(express.static(path.join(__dirname, 'static/indexDB'))); //indexDB
+app.use(express.static(path.join(__dirname, 'static/mvvm'))); //MVVM
 
 app.use('/', routes);
 
