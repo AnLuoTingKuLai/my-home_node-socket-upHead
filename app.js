@@ -38,11 +38,11 @@ morgan.token('from', function(req, res){
 });
 
 // 自定义format，其中包含自定义的token
-morgan.format('joke', '[joke] :method :remote-addr :url :status :res[content-length] - :response-time ms :remote-user :req[header]');
+morgan.format('log', '[log] :method :remote-addr :url :status :res[content-length] - :response-time ms :remote-user :req[header]');
 
 // 使用自定义的format
-app.use(morgan('joke', {stream: accessLogStream}))
-app.use(morgan('joke'))
+app.use(morgan('log', {stream: accessLogStream}))
+app.use(morgan('log'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '50mb'}));
