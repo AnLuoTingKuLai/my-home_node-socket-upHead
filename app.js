@@ -24,7 +24,7 @@ var logDirectory = path.join(__dirname, 'logs')
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
 
-// create a rotating write stream
+// 创建日志文件
 var accessLogStream = FileStreamRotator.getStream({
   date_format: 'YYYY-MM-DD',
   filename: path.join(logDirectory, '%DATE%-log.log'),
@@ -32,16 +32,17 @@ var accessLogStream = FileStreamRotator.getStream({
   verbose: false
 })
 
-// // 自定义token
-// morgan.token('from', function(req, res){
-//     return req.query.from || '-';
-// });
+// 自定义token
+morgan.token('from', function(req, res){
+    return req.query.from || '-';
+});
 
-// // 自定义format，其中包含自定义的token
-// morgan.format('joke', '[joke] :method :url :status :res[content-length] - :response-time ms');
+// 自定义format，其中包含自定义的token
+morgan.format('joke', '[joke] :method :remote-addr :url :status :res[content-length] - :response-time ms :remote-user :req[header]');
 
 // 使用自定义的format
-app.use(morgan('combined', {stream: accessLogStream}))
+app.use(morgan('joke', {stream: accessLogStream}))
+app.use(morgan('joke'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '50mb'}));
