@@ -109,21 +109,21 @@ header {
 		background: url(../images/banner.jpg) no-repeat 10% 10%;
 		background-size: cover;
 		z-index: 3;
-		animation: kenburns-1 20s 6s linear infinite;
+		// animation: kenburns-1 20s 6s linear infinite;
 	}
 	.banner-image-2 {
 		background-image: url(../images/banner2.jpg);
-		animation-name: kenburns-2;
+		// animation-name: kenburns-2;
 		z-index: 2;
 	}
 	.banner-image-3 {
 		background-image: url(../images/banner3.jpg);
-		animation-name: kenburns-3;
+		// animation-name: kenburns-3;
 		z-index: 1;
 	}
 	.banner-image-4 {
 		background-image: url(../images/banner4.jpg);
-		animation-name: kenburns-4;
+		// animation-name: kenburns-4;
 		z-index: 0;
 	}
 	.banner-caption {
