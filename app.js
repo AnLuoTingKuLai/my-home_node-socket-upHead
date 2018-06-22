@@ -1,7 +1,8 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var morgan = require('morgan');
+var FileStreamRotator = require('file-stream-rotator')
 var cookieParser = require('cookie-parser'); //获取cookie用
 var bodyParser = require('body-parser'); //编码解析用
 var fs = require("fs"); //文件上传
@@ -18,7 +19,30 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, './static/favicon.ico')));
-app.use(logger('dev'));
+
+var logDirectory = path.join(__dirname, 'logs')
+// ensure log directory exists
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
+
+// create a rotating write stream
+var accessLogStream = FileStreamRotator.getStream({
+  date_format: 'YYYY-MM-DD',
+  filename: path.join(logDirectory, '%DATE%-log.log'),
+  frequency: 'daily',
+  verbose: false
+})
+
+// // 自定义token
+// morgan.token('from', function(req, res){
+//     return req.query.from || '-';
+// });
+
+// // 自定义format，其中包含自定义的token
+// morgan.format('joke', '[joke] :method :url :status :res[content-length] - :response-time ms');
+
+// 使用自定义的format
+app.use(morgan('combined', {stream: accessLogStream}))
+
 app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '50mb'}));
 //允许上传大文件
