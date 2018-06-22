@@ -74,6 +74,8 @@ class IndexObj {
 }
 //加载完成后
 $(function () {
+    //加载
+    $('#screen-mask').addClass('on');
     let indexObj = new IndexObj();
     let bannerX = null;
     let bannerY = null;
