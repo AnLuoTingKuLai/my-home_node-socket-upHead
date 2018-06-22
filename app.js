@@ -38,7 +38,7 @@ morgan.token('from', function(req, res){
 });
 
 // 自定义format，其中包含自定义的token
-morgan.format('log', '[log] :method :remote-addr :url :status :res[content-length] - :response-time ms :remote-user :req[header]');
+morgan.format('log', '[:date[web]] :method  :remote-addr :url :status :res[content-length] - :response-time ms :remote-user :req[header]');
 
 // 使用自定义的format
 app.use(morgan('log', {stream: accessLogStream}))
