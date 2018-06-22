@@ -3,3 +3,4 @@ node_modules/
 doc/
 config/server.js
 logs/
+npm-debug.log
