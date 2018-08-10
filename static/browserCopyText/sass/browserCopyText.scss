@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 .wrap {
 	min-width: 100%;
 	min-height: 100%;
@@ -7,35 +6,27 @@
 	background-color: rgba(0, 0, 0, .5);
 	background: url('../images/banner4.jpg') no-repeat center fixed border-box;
 	background-size: cover;
-	&:before {
+	&:before { 
 		content: "";
-		position: fixed;
+		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-image: radial-gradient(rgba(255, 255, 255, .3) 0%, rgba(0, 0, 0, .6) 50%, rgba(0, 0, 0, 1) 80%);
+		background-image: radial-gradient(rgba(255, 255, 255, .5) 0%, rgba(0, 0, 0, .6) 50%, rgba(0, 0, 0, 1) 80%);
 	}
-	.grid {
-		// display: grid;
-		display: flex;
-		flex-flow: wrap;
-		width: 930px;
-		margin: auto;
+	.grid {   
+		display: grid;  
+		width: 900px;
+		margin: auto; 
 		margin-top: 80px;
-		margin-bottom: 80px;
-		align-items: center;
-		// justify-content: center;
-		// grid-gap: 10px; //间距
-		text-align: center;
+		grid-gap: 10px; //间距
+		text-align: center; 
 		/*列/行*/
-		// grid-template: repeat(2, 250px) / repeat(3, 300px);
-		.grid-item {
-			// width: 100%;
-			// height: 100%;
-			width: 300px;
-			height: 250px;
-			margin: 5px;
+		grid-template: repeat(2, 250px) / repeat(3, 300px);
+		.grid-item { 
+			width: 100%; 
+			height: 100%;
 			border: 1px solid rgba(255, 255, 255, 0.2);
 			color: #fff;
 			background-color: rgba(255, 255, 255, 0.2);
@@ -98,11 +89,6 @@
 		.box-an-content,
 		.box-an-mask {
 			position: absolute;
-			display: flex;
-			flex-flow: wrap;
-			align-items: center;
-			justify-content: center;
-			align-content: center;
 			top: 8%;
 			right: 10%;
 			bottom: 8%;

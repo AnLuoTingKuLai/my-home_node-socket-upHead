@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>浏览器复制粘贴板</title>
+        <link rel="stylesheet" type="text/css" href="../css/common.css" /> </head>
+        <link rel="stylesheet" type="text/css" href="../css/browserCopyText.css" /> </head>
+    <style>
+        .c-green {
+            color:rgb(88, 255, 158) !important;
+        }
+        .c-orange {
+            color: orange
+        }
+        .content-wrap {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-flow: wrap;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            z-index: 999;
+            color: rgb(202, 193, 255);
+            background: transparent;
+        }
+        .content-wrap p {
+            margin: 0 20px;
+            padding: 20px;
+            border: 1px solid #fff;
+        }
+        .copy-textarea { 
+            /* 必须存在 不可以隐藏 要不会导致复制失效 */
+            display: block;
+            width: 0.1px;
+            height: 0.1px;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            resize: none;
+            background: transparent;
+            /* visibility: hidden; */
+        }
+        .input-wrap { 
+            display: flex;
+            flex-flow: wrap;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+        .emphasize {
+            font-weight: 600;
+            color: rgb(255, 149, 149);
+        }
+        .cursor-pointer {
+            cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="content-wrap">
+            <div class="input-wrap">
+                <input type="text" id="appendVal" placeholder="请输入附加内容">
+            </div>
+            <p class="copy">
+                我需要<span class="emphasize"> 手动复制</span><br/>
+                复制我不会带附加内容<br/>
+                黏贴之后查看复制后的内容(不会添加附加内容)
+            </p>
+            <p id="autoCopy" class="c-green copy">
+                <span class="emphasize">选中 </span>内容自动复制
+                <br/> 复制我会带附加内容<br/>
+                效果会在复制的内容后面添加(显示input内容)
+            </p>
+            <p id="clickCopy" class="c-orange copy cursor-pointer">
+                <span class="emphasize">点击 </span>框内自动复制<br/> 
+                复制我不会带附加内容
+                <br/> 黏贴之后查看复制后的内容(显示input内容)
+                <textarea id="copyInput" class="copy-textarea"></textarea>
+            </p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+        
+        document.getElementById('autoCopy').addEventListener('click', function(e) {
+            document.execCommand("Copy");
+        })
+        //事件监听绑定
+        document.getElementById('autoCopy').addEventListener('copy', copyAppendText);
+        document.getElementById('clickCopy').addEventListener('copy', copyAppendText)
+        //点击自动获取内容
+        document.getElementById('clickCopy').addEventListener('click', function(e) {
+            let textAreaObj = document.getElementById("copyInput");
+            textAreaObj.value = this.innerText;
+            textAreaObj.select(); // 选择对象
+            document.execCommand("Copy"); // 执行浏览器复制命令
+        })
+        //复制内容后面添加内容
+        function copyAppendText(e){
+            let event = e || event;
+            event.preventDefault(); // 取消默认的复制事件 
+            let textFont, copyFont = window.getSelection(0).toString(); // 被复制的文字 等下插入
+            //设置自定义后缀
+            let val = document.getElementById('appendVal').value;
+            
+            //  return window.clipboardData.setData("text", `${copyFont}\n(${val ? val : 'mhyyz.com'})`);
+            let copyText = '';
+            if (copyFont.includes('显示input内容')) {
+                copyText = `${copyFont.replace(/显示input内容/, val ? val : 'mhyyz.com')}`;
+            } else {
+                copyText = `${copyFont}\n(${val ? val : 'mhyyz.com'})`;
+            }
+            if (event.clipboardData) {
+                return event.clipboardData.setData('text', copyText); // 将信息写入粘贴板
+            } else {
+                // 兼容IE
+                return window.clipboardData.setData("text", copyText);
+            }
+        }
+</script>
+</html>
