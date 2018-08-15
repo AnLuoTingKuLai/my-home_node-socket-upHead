@@ -1,7 +1,7 @@
 
 # 安装
 
-```
+``` 
 $ git clone
 $ npm install
 $ npm install -g supervisor //监听项目
