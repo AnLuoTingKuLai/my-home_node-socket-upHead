@@ -206,6 +206,7 @@ header .head-nav {
         overflow: hidden;
         box-shadow: 0 0 10px #00a67c; }
         .brief .brief-content .brief-msg .head-img img {
+          object-fit: cover;
           width: 100%;
           height: 100%; }
       .brief .brief-content .brief-msg .brief-base-msg {
